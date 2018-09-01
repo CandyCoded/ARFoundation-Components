@@ -4,7 +4,10 @@
         "Unity.XR.ARFoundation"
     ],
     "optionalUnityReferences": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Android",
+        "iOS"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false
 }
