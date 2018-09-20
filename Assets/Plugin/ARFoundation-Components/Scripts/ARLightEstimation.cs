@@ -1,53 +1,65 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-public class ARLightEstimation : MonoBehaviour
+namespace CandyCoded
 {
 
-    [SerializeField]
-    private new Light light;
-
-    private void FrameChanged(ARCameraFrameEventArgs args)
+    [RequireComponent(typeof(Light))]
+    public class ARLightEstimation : MonoBehaviour
     {
 
-        float? averageBrightness = args.lightEstimation.averageBrightness;
-        float? averageColorTemperature = args.lightEstimation.averageColorTemperature;
-        Color? colorCorrection = args.lightEstimation.colorCorrection;
+        private new Light light;
 
-        if (averageBrightness.HasValue)
+        private void Awake()
         {
 
-            light.intensity = averageBrightness.Value;
+            light = gameObject.GetComponent<Light>();
 
         }
 
-        if (averageColorTemperature.HasValue)
+        private void FrameChanged(ARCameraFrameEventArgs args)
         {
 
-            light.colorTemperature = averageColorTemperature.Value;
+            float? averageBrightness = args.lightEstimation.averageBrightness;
+            float? averageColorTemperature = args.lightEstimation.averageColorTemperature;
+            Color? colorCorrection = args.lightEstimation.colorCorrection;
+
+            if (averageBrightness.HasValue)
+            {
+
+                light.intensity = averageBrightness.Value;
+
+            }
+
+            if (averageColorTemperature.HasValue)
+            {
+
+                light.colorTemperature = averageColorTemperature.Value;
+
+            }
+
+            if (colorCorrection.HasValue)
+            {
+
+                light.color = colorCorrection.Value;
+
+            }
 
         }
 
-        if (colorCorrection.HasValue)
+        private void OnEnable()
         {
 
-            light.color = colorCorrection.Value;
+            ARSubsystemManager.cameraFrameReceived += FrameChanged;
 
         }
 
-    }
+        private void OnDisable()
+        {
 
-    private void OnEnable()
-    {
+            ARSubsystemManager.cameraFrameReceived -= FrameChanged;
 
-        ARSubsystemManager.cameraFrameReceived += FrameChanged;
-
-    }
-
-    private void OnDisable()
-    {
-
-        ARSubsystemManager.cameraFrameReceived -= FrameChanged;
+        }
 
     }
 
