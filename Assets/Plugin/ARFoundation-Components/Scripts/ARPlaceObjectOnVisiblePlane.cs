@@ -11,6 +11,7 @@ namespace CandyCoded
     {
 
         [SerializeField]
+        [EnumMask]
         private PlaneAlignment planeAlignment = PlaneAlignment.Horizontal;
 
         public delegate void PlaneEvent(bool planeVisible, Pose pose);
