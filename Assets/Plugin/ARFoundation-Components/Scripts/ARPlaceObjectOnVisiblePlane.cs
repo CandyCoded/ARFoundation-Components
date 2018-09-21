@@ -33,19 +33,14 @@ namespace CandyCoded
         private void Update()
         {
 
-            if (planeManager.enabled)
+            if (planeManager.enabled && PlaneUpdate != null)
             {
 
                 Pose pose;
 
                 bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
 
-                if (PlaneUpdate != null)
-                {
-
-                    PlaneUpdate(planeVisible, pose);
-
-                }
+                PlaneUpdate(planeVisible, pose);
 
             }
 
