@@ -39,7 +39,7 @@ namespace CandyCoded
 
                 Pose pose;
 
-                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
+                ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
 
                 Vector3 distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
 
