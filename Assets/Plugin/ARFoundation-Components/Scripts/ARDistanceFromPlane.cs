@@ -14,7 +14,7 @@ namespace CandyCoded
         [EnumMask]
         private PlaneAlignment planeAlignment = PlaneAlignment.Horizontal;
 
-        public delegate void DistanceEvent(float distance);
+        public delegate void DistanceEvent(bool planeVisible, float distance);
         public event DistanceEvent DistanceUpdate;
 
         [HideInInspector]
@@ -39,11 +39,11 @@ namespace CandyCoded
 
                 Pose pose;
 
-                ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
+                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
 
                 Vector3 distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
 
-                DistanceUpdate(Mathf.Abs(distanceFromPlane.magnitude));
+                DistanceUpdate(planeVisible, Mathf.Abs(distanceFromPlane.magnitude));
 
             }
 
