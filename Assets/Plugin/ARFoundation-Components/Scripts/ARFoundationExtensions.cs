@@ -64,6 +64,20 @@ namespace CandyCoded
 
         }
 
+        public static void RemoveAllSpawnedPlanesFromScene()
+        {
+
+            var planes = Object.FindObjectsOfType<ARPlane>();
+
+            foreach (ARPlane plane in planes)
+            {
+
+                Object.Destroy(plane.gameObject);
+
+            }
+
+        }
+
     }
 
 }
