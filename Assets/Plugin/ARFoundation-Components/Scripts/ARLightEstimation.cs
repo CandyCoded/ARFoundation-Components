@@ -15,6 +15,13 @@ namespace CandyCoded
 
             light = gameObject.GetComponent<Light>();
 
+            if (ARSubsystemManager.systemState == ARSystemState.Unsupported)
+            {
+
+                enabled = false;
+
+            }
+
         }
 
         private void FrameChanged(ARCameraFrameEventArgs args)
