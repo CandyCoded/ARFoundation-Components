@@ -29,7 +29,8 @@ namespace CandyCoded
             sessionOrigin = gameObject.GetComponent<ARSessionOrigin>();
             planeManager = gameObject.GetComponent<ARPlaneManager>();
 
-            if (ARSubsystemManager.systemState == ARSystemState.Unsupported)
+            if (ARSubsystemManager.systemState == ARSystemState.None ||
+                ARSubsystemManager.systemState == ARSystemState.Unsupported)
             {
 
                 enabled = false;
