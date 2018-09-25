@@ -29,6 +29,11 @@ namespace CandyCoded
             sessionOrigin = gameObject.GetComponent<ARSessionOrigin>();
             planeManager = gameObject.GetComponent<ARPlaneManager>();
 
+        }
+
+        private void Start()
+        {
+
             if (ARSubsystemManager.systemState == ARSystemState.None ||
                 ARSubsystemManager.systemState == ARSystemState.Unsupported)
             {

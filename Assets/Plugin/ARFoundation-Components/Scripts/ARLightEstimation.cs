@@ -15,6 +15,11 @@ namespace CandyCoded
 
             light = gameObject.GetComponent<Light>();
 
+        }
+
+        private void Start()
+        {
+
             if (ARSubsystemManager.systemState == ARSystemState.None ||
                 ARSubsystemManager.systemState == ARSystemState.Unsupported)
             {
