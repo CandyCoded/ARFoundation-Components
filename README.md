@@ -2,7 +2,9 @@
 
 ## Features
 
-- Light Estimation
+- ARDistanceFromPlane
+- ARLightEstimation
+- ARPlaceObjectOnVisiblePlane
 
 ## Installation
 
