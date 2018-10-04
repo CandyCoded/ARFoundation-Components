@@ -3,7 +3,7 @@
     "displayName": "ARFoundation-Components",
     "version": "1.0.0",
     "unity": "2018.2",
-    "description": "Generic component for use with ARFoundation",
+    "description": "Generic components for use with ARFoundation",
     "keywords": [
         "components",
         "extensions",
