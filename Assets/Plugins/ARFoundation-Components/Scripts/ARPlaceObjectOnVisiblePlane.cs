@@ -15,10 +15,16 @@ namespace CandyCoded
         private PlaneAlignment planeAlignment = PlaneAlignment.Horizontal;
 
         [SerializeField]
-        private GameObject gameObjectToPlace;
+        private GameObject objectToPlace;
 
-        public delegate void PlaneEvent(bool planeVisible, Pose pose);
-        public event PlaneEvent PlaneUpdate;
+        [SerializeField]
+        private bool placeMultiple;
+
+        public delegate void PlaneUpdatedEvent(bool planeVisible, Pose pose);
+        public delegate void GameObjectPlacedEvent(GameObject gameObject);
+
+        public event PlaneUpdatedEvent PlaneUpdated;
+        public event GameObjectPlacedEvent ObjectPlaced;
 
         [HideInInspector]
         public ARSessionOrigin sessionOrigin;
@@ -26,14 +32,14 @@ namespace CandyCoded
         [HideInInspector]
         public ARPlaneManager planeManager;
 
-        private Camera childCamera;
+        [HideInInspector]
+        public Camera childCamera;
 
         private void Awake()
         {
 
             sessionOrigin = gameObject.GetComponent<ARSessionOrigin>();
             planeManager = gameObject.GetComponent<ARPlaneManager>();
-
             childCamera = gameObject.GetComponentInChildren<Camera>();
 
         }
@@ -61,17 +67,17 @@ namespace CandyCoded
 
                 bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
 
-                if (gameObjectToPlace)
+                if (objectToPlace)
                 {
 
-                    PlaceObject(planeVisible, pose);
+                    PlaceObjectOnPlane();
 
                 }
 
-                if (PlaneUpdate != null)
+                if (PlaneUpdated != null)
                 {
 
-                    PlaneUpdate(planeVisible, pose);
+                    PlaneUpdated(planeVisible, pose);
 
                 }
 
@@ -79,25 +85,34 @@ namespace CandyCoded
 
         }
 
-        private void PlaceObject(bool planeVisible, Pose pose)
+        private void PlaceObjectOnPlane()
         {
 
-            if (planeVisible)
+            Pose pose;
+
+            ARPlane plane;
+
+            if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane))
             {
 
-                gameObjectToPlace.SetActive(true);
+                var spawnedGameObject = Instantiate(objectToPlace, pose.position, pose.rotation);
 
-                sessionOrigin.MakeContentAppearAt(gameObjectToPlace.transform, pose.position + new Vector3(0, 0.1f, 0));
-
-                Vector3 lookAtPosition = gameObjectToPlace.transform.position + childCamera.transform.rotation * Vector3.forward;
-                lookAtPosition.y = 0;
-
-                gameObjectToPlace.transform.LookAt(lookAtPosition);
-
-                if (gameObjectToPlace.GetInputDown(childCamera))
+                if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
                 {
 
-                    sessionOrigin.MakeContentAppearAt(gameObjectToPlace.transform, pose.position);
+                    RotateObjectTowardsCamera(spawnedGameObject.transform, childCamera);
+
+                }
+
+                if (ObjectPlaced != null)
+                {
+
+                    ObjectPlaced(spawnedGameObject);
+
+                }
+
+                if (!placeMultiple)
+                {
 
                     planeManager.enabled = false;
 
@@ -106,15 +121,20 @@ namespace CandyCoded
                 }
 
             }
-            else
-            {
 
-                gameObjectToPlace.SetActive(false);
+        }
 
-                gameObjectToPlace.transform.position = Vector3.zero;
-                gameObjectToPlace.transform.rotation = Quaternion.identity;
+        private static void RotateObjectTowardsCamera(Transform transform, Camera camera)
+        {
 
-            }
+            Vector3 previousRotation = transform.rotation.eulerAngles;
+
+            Vector3 lookAtPosition = transform.position + camera.transform.rotation * Vector3.forward;
+            lookAtPosition.y = 0;
+
+            transform.LookAt(lookAtPosition);
+
+            transform.rotation = Quaternion.Euler(previousRotation.x, transform.rotation.eulerAngles.y, previousRotation.z);
 
         }
 
