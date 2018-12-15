@@ -2,7 +2,7 @@
     "name": "com.candycoded.arfoundation-components",
     "displayName": "ARFoundation-Components",
     "version": "1.0.0",
-    "unity": "2018.2",
+    "unity": "2018.3",
     "description": "Generic components for use with ARFoundation",
     "keywords": [
         "components",
@@ -12,6 +12,6 @@
         "arkit"
     ],
     "dependencies": {
-        "com.unity.xr.arfoundation": "^1.0.0-preview.22"
+        "com.unity.xr.arfoundation": "1.0.0-preview.22"
     }
 }
