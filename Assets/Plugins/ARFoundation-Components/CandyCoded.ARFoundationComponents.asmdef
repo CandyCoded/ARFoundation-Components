@@ -3,10 +3,7 @@
     "references": [],
     "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": [
-        "Android",
-        "iOS"
-    ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
