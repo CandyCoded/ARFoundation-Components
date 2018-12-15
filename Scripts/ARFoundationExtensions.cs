@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
+using UnityEngine.XR.ARFoundation;
 
 namespace CandyCoded
 {
@@ -17,7 +17,7 @@ namespace CandyCoded
             }
         }
 
-        public static bool IsLookingAtPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose, out ARPlane plane)
+        public static bool RaycastToPlane(Vector3 position, ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose, out ARPlane plane)
         {
 
             var hits = new List<ARRaycastHit>();
@@ -26,7 +26,7 @@ namespace CandyCoded
 
             plane = null;
 
-            if (sessionOrigin.Raycast(CenterOfScreen, hits, TrackableType.PlaneWithinPolygon))
+            if (sessionOrigin.Raycast(position, hits, TrackableType.PlaneWithinPolygon))
             {
 
                 var hit = hits[0];
@@ -45,12 +45,19 @@ namespace CandyCoded
 
         }
 
+        public static bool IsLookingAtPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose, out ARPlane plane)
+        {
+
+            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+
+        }
+
         public static bool IsLookingAtPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose)
         {
 
             ARPlane plane;
 
-            return IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out pose, out plane);
 
         }
 
@@ -60,7 +67,52 @@ namespace CandyCoded
             Pose pose;
             ARPlane plane;
 
-            return IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+
+        }
+
+        public static bool HasTouchedPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose, out ARPlane plane)
+        {
+
+            pose = Pose.identity;
+
+            plane = null;
+
+            if (Input.touchSupported && Input.touchCount > 0)
+            {
+
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+
+                    return RaycastToPlane(touch.position, sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+
+                }
+
+            }
+
+            return false;
+
+        }
+
+        public static bool HasTouchedPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose)
+        {
+
+            ARPlane plane;
+
+            return HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+
+        }
+
+        public static bool HasTouchedPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment)
+        {
+
+            ARPlane plane;
+
+            Pose pose;
+
+            return HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane);
 
         }
 
