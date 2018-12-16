@@ -15,7 +15,8 @@
 ```json
 {
     "dependencies": {
-        "com.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#upm"
+        "com.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#upm",
+        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#upm"
     }
 }
 ```
