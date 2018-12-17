@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-namespace CandyCoded
+namespace CandyCoded.ARFoundationComponents
 {
 
     [RequireComponent(typeof(Light))]
