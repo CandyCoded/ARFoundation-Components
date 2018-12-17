@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
 
-namespace CandyCoded
+namespace CandyCoded.ARFoundationComponents
 {
 
     public static class ARFoundationExtensions

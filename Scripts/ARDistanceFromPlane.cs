@@ -2,7 +2,7 @@
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
 
-namespace CandyCoded
+namespace CandyCoded.ARFoundationComponents
 {
 
     [RequireComponent(typeof(ARSessionOrigin))]
