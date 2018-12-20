@@ -18,9 +18,14 @@ namespace CandyCoded.ARFoundationComponents
         private GameObject objectToPlace;
 
         [SerializeField]
-        private bool placeMultiple;
+        private bool showBeforePlacing;
 
-        public delegate void PlaneUpdatedEvent(bool planeVisible, Pose pose);
+        [SerializeField]
+        private bool spawnMultiple;
+
+        private GameObject showBeforePlacingGameObject;
+
+        public delegate void PlaneUpdatedEvent(bool planeVisible, Pose pose, ARPlane plane);
         public delegate void GameObjectPlacedEvent(GameObject gameObject);
 
         public event PlaneUpdatedEvent PlaneUpdated;
@@ -63,62 +68,102 @@ namespace CandyCoded.ARFoundationComponents
             if (planeManager.enabled)
             {
 
-                Pose pose;
+                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out Pose lookingAtPose, out ARPlane lookingAtPlane);
 
-                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
-
-                if (objectToPlace)
+                if (showBeforePlacing && showBeforePlacingGameObject)
                 {
 
-                    PlaceObjectOnPlane();
+                    ShowObjectOnPlane(lookingAtPose, lookingAtPlane);
+
+                    if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, planeAlignment))
+                    {
+
+                        PlaceObjectOnPlane(lookingAtPose, lookingAtPlane);
+
+                    }
+
+                }
+                else if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out Pose touchPose, out ARPlane touchPlane))
+                {
+
+                    PlaceObjectOnPlane(touchPose, touchPlane);
 
                 }
 
-                if (PlaneUpdated != null)
-                {
 
-                    PlaneUpdated(planeVisible, pose);
-
-                }
+                PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
 
             }
 
         }
 
-        private void PlaceObjectOnPlane()
+        private void ShowObjectOnPlane(Pose lookingAtPose, ARPlane lookingAtPlane)
         {
 
-            Pose pose;
-
-            ARPlane plane;
-
-            if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane))
+            if (lookingAtPlane != null)
             {
 
-                var spawnedGameObject = Instantiate(objectToPlace, pose.position, pose.rotation);
+                showBeforePlacingGameObject.SetActive(true);
 
-                if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
-                {
+                SetTransformWithPoseAndPlaneData(showBeforePlacingGameObject.transform, childCamera, lookingAtPose, lookingAtPlane);
 
-                    RotateObjectTowardsCamera(spawnedGameObject.transform, childCamera);
+            }
+            else
+            {
 
-                }
+                showBeforePlacingGameObject.SetActive(false);
 
-                if (ObjectPlaced != null)
-                {
+            }
 
-                    ObjectPlaced(spawnedGameObject);
+        }
 
-                }
+        private void PlaceObjectOnPlane(Pose touchPose, ARPlane touchPlane)
+        {
 
-                if (!placeMultiple)
-                {
+            GameObject objectOnPlane = null;
 
-                    planeManager.enabled = false;
+            if (objectToPlace.scene.IsValid() && spawnMultiple == false)
+            {
 
-                    ARFoundationExtensions.RemoveAllSpawnedPlanesFromScene();
+                objectOnPlane = objectToPlace;
 
-                }
+            }
+            else
+            {
+
+                objectOnPlane = Instantiate(objectToPlace);
+
+            }
+
+            objectOnPlane.SetActive(true);
+
+            SetTransformWithPoseAndPlaneData(objectOnPlane.transform, childCamera, touchPose, touchPlane);
+
+            ObjectPlaced?.Invoke(objectOnPlane);
+
+            if (spawnMultiple == false)
+            {
+
+                planeManager.enabled = false;
+
+                Destroy(showBeforePlacingGameObject);
+
+                ARFoundationExtensions.RemoveAllSpawnedPlanesFromScene();
+
+            }
+
+        }
+
+        private static void SetTransformWithPoseAndPlaneData(Transform transform, Camera camera, Pose pose, ARPlane plane)
+        {
+
+            transform.position = pose.position;
+            transform.rotation = pose.rotation;
+
+            if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
+            {
+
+                RotateObjectTowardsCamera(transform, camera);
 
             }
 
@@ -135,6 +180,28 @@ namespace CandyCoded.ARFoundationComponents
             transform.LookAt(lookAtPosition);
 
             transform.rotation = Quaternion.Euler(previousRotation.x, transform.rotation.eulerAngles.y, previousRotation.z);
+
+        }
+
+        private void OnEnable()
+        {
+
+            if (objectToPlace.scene.IsValid())
+            {
+
+                objectToPlace.SetActive(false);
+
+            }
+
+            showBeforePlacingGameObject = Instantiate(objectToPlace);
+            showBeforePlacingGameObject.SetActive(false);
+
+        }
+
+        private void OnDisable()
+        {
+
+            Destroy(showBeforePlacingGameObject);
 
         }
 
