@@ -12,7 +12,7 @@
         "arkit"
     ],
     "dependencies": {
-        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#upm",
+        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v1.1.0",
         "com.unity.xr.arfoundation": "1.0.0-preview.22"
     }
 }
