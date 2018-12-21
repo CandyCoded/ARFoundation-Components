@@ -55,19 +55,14 @@ namespace CandyCoded.ARFoundationComponents
         public static bool IsLookingAtPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose)
         {
 
-            ARPlane plane;
-
-            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out pose, out ARPlane plane);
 
         }
 
         public static bool IsLookingAtPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment)
         {
 
-            Pose pose;
-            ARPlane plane;
-
-            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+            return RaycastToPlane(CenterOfScreen, sessionOrigin, planeManager, planeAlignment, out Pose pose, out ARPlane plane);
 
         }
 
@@ -99,20 +94,14 @@ namespace CandyCoded.ARFoundationComponents
         public static bool HasTouchedPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment, out Pose pose)
         {
 
-            ARPlane plane;
-
-            return HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+            return HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out ARPlane plane);
 
         }
 
         public static bool HasTouchedPlane(ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, PlaneAlignment planeAlignment)
         {
 
-            ARPlane plane;
-
-            Pose pose;
-
-            return HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out pose, out plane);
+            return HasTouchedPlane(sessionOrigin, planeManager, planeAlignment, out Pose pose, out ARPlane plane);
 
         }
 

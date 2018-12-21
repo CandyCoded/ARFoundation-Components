@@ -50,9 +50,7 @@ namespace CandyCoded.ARFoundationComponents
             if (planeManager.enabled && DistanceUpdate != null)
             {
 
-                Pose pose;
-
-                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out pose);
+                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out Pose pose);
 
                 Vector3 distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
 
