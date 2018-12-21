@@ -1,9 +1,25 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
 
 namespace CandyCoded.ARFoundationComponents
 {
+
+    [System.Serializable]
+    public class PlaneUpdatedEvent : UnityEvent<bool, Pose, ARPlane>
+    {
+    }
+
+    [System.Serializable]
+    public class PlaneTouchedEvent : UnityEvent<Pose, ARPlane>
+    {
+    }
+
+    [System.Serializable]
+    public class GameObjectPlacedEvent : UnityEvent<GameObject>
+    {
+    }
 
     [RequireComponent(typeof(ARSessionOrigin))]
     [RequireComponent(typeof(ARPlaneManager))]
@@ -25,11 +41,9 @@ namespace CandyCoded.ARFoundationComponents
 
         private GameObject showBeforePlacingGameObject;
 
-        public delegate void PlaneUpdatedEvent(bool planeVisible, Pose pose, ARPlane plane);
-        public delegate void GameObjectPlacedEvent(GameObject gameObject);
-
-        public event PlaneUpdatedEvent PlaneUpdated;
-        public event GameObjectPlacedEvent ObjectPlaced;
+        public PlaneUpdatedEvent PlaneUpdated;
+        public PlaneTouchedEvent PlaneTouched;
+        public GameObjectPlacedEvent GameObjectPlaced;
 
         [HideInInspector]
         public ARSessionOrigin sessionOrigin;
@@ -80,6 +94,8 @@ namespace CandyCoded.ARFoundationComponents
 
                         PlaceObjectOnPlane(lookingAtPose, lookingAtPlane);
 
+                        PlaneTouched?.Invoke(lookingAtPose, lookingAtPlane);
+
                     }
 
                 }
@@ -87,6 +103,8 @@ namespace CandyCoded.ARFoundationComponents
                 {
 
                     PlaceObjectOnPlane(touchPose, touchPlane);
+
+                    PlaneTouched?.Invoke(touchPose, touchPlane);
 
                 }
 
@@ -138,7 +156,7 @@ namespace CandyCoded.ARFoundationComponents
 
             SetTransformWithPoseAndPlaneData(objectOnPlane.transform, childCamera, touchPose, touchPlane);
 
-            ObjectPlaced?.Invoke(objectOnPlane);
+            GameObjectPlaced?.Invoke(objectOnPlane);
 
             if (spawnMultiple == false)
             {
