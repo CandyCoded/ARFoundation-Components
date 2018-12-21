@@ -22,11 +22,8 @@ namespace CandyCoded.ARFoundationComponents
 
         public DistanceUpdateEvent DistanceUpdate;
 
-        [HideInInspector]
-        public ARSessionOrigin sessionOrigin;
-
-        [HideInInspector]
-        public ARPlaneManager planeManager;
+        public ARSessionOrigin sessionOrigin { get; private set; }
+        public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()
         {
