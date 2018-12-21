@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
+using UnityEngine.Events;
 
 namespace CandyCoded.ARFoundationComponents
 {
+
+    [System.Serializable]
+    public class DistanceUpdateEvent : UnityEvent<bool, float>
+    {
+    }
 
     [RequireComponent(typeof(ARSessionOrigin))]
     [RequireComponent(typeof(ARPlaneManager))]
@@ -14,8 +20,7 @@ namespace CandyCoded.ARFoundationComponents
         [EnumMask]
         private PlaneAlignment planeAlignment = PlaneAlignment.Horizontal;
 
-        public delegate void DistanceEvent(bool planeVisible, float distance);
-        public event DistanceEvent DistanceUpdate;
+        public DistanceUpdateEvent DistanceUpdate;
 
         [HideInInspector]
         public ARSessionOrigin sessionOrigin;
@@ -54,7 +59,7 @@ namespace CandyCoded.ARFoundationComponents
 
                 Vector3 distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
 
-                DistanceUpdate(planeVisible, Mathf.Abs(distanceFromPlane.magnitude));
+                DistanceUpdate?.Invoke(planeVisible, Mathf.Abs(distanceFromPlane.magnitude));
 
             }
 
