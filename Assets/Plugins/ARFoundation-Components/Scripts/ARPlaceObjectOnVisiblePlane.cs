@@ -90,7 +90,6 @@ namespace CandyCoded.ARFoundationComponents
 
                 }
 
-
                 PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
 
             }
