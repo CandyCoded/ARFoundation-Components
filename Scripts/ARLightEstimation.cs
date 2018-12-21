@@ -8,7 +8,7 @@ namespace CandyCoded.ARFoundationComponents
     public class ARLightEstimation : MonoBehaviour
     {
 
-        private new Light light;
+        public new Light light { get; private set; }
 
         private void Awake()
         {

@@ -45,14 +45,9 @@ namespace CandyCoded.ARFoundationComponents
         public PlaneTouchedEvent PlaneTouched;
         public GameObjectPlacedEvent GameObjectPlaced;
 
-        [HideInInspector]
-        public ARSessionOrigin sessionOrigin;
-
-        [HideInInspector]
-        public ARPlaneManager planeManager;
-
-        [HideInInspector]
-        public Camera childCamera;
+        public ARSessionOrigin sessionOrigin { get; private set; }
+        public ARPlaneManager planeManager { get; private set; }
+        public Camera childCamera { get; private set; }
 
         private void Awake()
         {
