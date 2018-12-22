@@ -117,20 +117,6 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
-        public static void RotateObjectTowardsCamera(Transform transform, Camera camera)
-        {
-
-            Vector3 previousRotation = transform.rotation.eulerAngles;
-
-            Vector3 lookAtPosition = transform.position + camera.transform.rotation * Vector3.forward;
-            lookAtPosition.y = 0;
-
-            transform.LookAt(lookAtPosition);
-
-            transform.rotation = Quaternion.Euler(previousRotation.x, transform.rotation.eulerAngles.y, previousRotation.z);
-
-        }
-
     }
 
 }
