@@ -13,11 +13,13 @@ namespace CandyCoded.ARFoundationComponents
     public class ARPlaceObjectOnPlane : MonoBehaviour
     {
 
+#pragma warning disable CS0649
         [SerializeField]
         private GameObject objectToPlace;
 
         [SerializeField]
         private bool placeMultiple;
+#pragma warning restore CS0649
 
         public GameObjectPlacedEvent GameObjectPlaced;
 
