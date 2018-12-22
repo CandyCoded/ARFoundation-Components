@@ -8,7 +8,9 @@ namespace CandyCoded.ARFoundationComponents
     public class ARLightEstimation : MonoBehaviour
     {
 
+#pragma warning disable CS0109
         public new Light light { get; private set; }
+#pragma warning restore CS0109
 
         private void Awake()
         {

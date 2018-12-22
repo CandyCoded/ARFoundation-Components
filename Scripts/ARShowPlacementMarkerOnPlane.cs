@@ -7,8 +7,10 @@ namespace CandyCoded.ARFoundationComponents
     public class ARShowPlacementMarkerOnPlane : MonoBehaviour
     {
 
+#pragma warning disable CS0649
         [SerializeField]
         private GameObject placementMarker;
+#pragma warning restore CS0649
 
         private bool placementMarkerActiveState;
 
