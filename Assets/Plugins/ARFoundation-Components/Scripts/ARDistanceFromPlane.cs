@@ -1,6 +1,5 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.Experimental.XR;
 using UnityEngine.Events;
 
 namespace CandyCoded.ARFoundationComponents
@@ -15,10 +14,6 @@ namespace CandyCoded.ARFoundationComponents
     [RequireComponent(typeof(ARPlaneManager))]
     public class ARDistanceFromPlane : MonoBehaviour
     {
-
-        [SerializeField]
-        [EnumMask]
-        private PlaneAlignment planeAlignment = PlaneAlignment.Horizontal;
 
         public DistanceUpdateEvent DistanceUpdate;
 
@@ -52,7 +47,7 @@ namespace CandyCoded.ARFoundationComponents
             if (planeManager.enabled && DistanceUpdate != null)
             {
 
-                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, planeAlignment, out Pose pose);
+                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out Pose pose);
 
                 Vector3 distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
 
