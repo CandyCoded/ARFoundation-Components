@@ -10,8 +10,7 @@ namespace CandyCoded.ARFoundationComponents
     {
 
 #pragma warning disable CS0649
-        [SerializeField]
-        private GameObject placementMarker;
+        public GameObject placementMarker;
 #pragma warning restore CS0649
 
         private bool placementMarkerActiveState;
