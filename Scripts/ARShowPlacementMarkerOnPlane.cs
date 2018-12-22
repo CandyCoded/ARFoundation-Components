@@ -43,16 +43,11 @@ namespace CandyCoded.ARFoundationComponents
 
                 placementMarkerActiveState = placementMarker.activeSelf;
 
-                placementMarkerGameObject = placementMarker;
-
-            }
-            else
-            {
-
-                placementMarkerGameObject = Instantiate(placementMarker);
+                placementMarker.SetActive(false);
 
             }
 
+            placementMarkerGameObject = Instantiate(placementMarker);
             placementMarkerGameObject.SetActive(false);
 
         }
@@ -66,12 +61,8 @@ namespace CandyCoded.ARFoundationComponents
                 placementMarker.SetActive(placementMarkerActiveState);
 
             }
-            else
-            {
 
-                Destroy(placementMarkerGameObject);
-
-            }
+            Destroy(placementMarkerGameObject);
 
         }
 
