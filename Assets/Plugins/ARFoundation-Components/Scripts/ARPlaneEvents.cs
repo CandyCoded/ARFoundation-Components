@@ -11,12 +11,7 @@ namespace CandyCoded.ARFoundationComponents
     }
 
     [System.Serializable]
-    public class PlaneTouchedWithTouchPositionEvent : UnityEvent<Pose, ARPlane>
-    {
-    }
-
-    [System.Serializable]
-    public class PlaneTouchedWithLookingAtPositionEvent : UnityEvent<Pose, ARPlane>
+    public class PlaneTouchedEvent : UnityEvent<Pose, ARPlane>
     {
     }
 
@@ -26,8 +21,8 @@ namespace CandyCoded.ARFoundationComponents
     {
 
         public PlaneUpdatedEvent PlaneUpdated;
-        public PlaneTouchedWithTouchPositionEvent PlaneTouchedWithTouchPosition;
-        public PlaneTouchedWithLookingAtPositionEvent PlaneTouchedWithLookingAtPosition;
+        public PlaneTouchedEvent PlaneTouchedWithTouchPosition;
+        public PlaneTouchedEvent PlaneTouchedWithLookingAtPosition;
 
         public ARSessionOrigin sessionOrigin { get; private set; }
         public ARPlaneManager planeManager { get; private set; }
