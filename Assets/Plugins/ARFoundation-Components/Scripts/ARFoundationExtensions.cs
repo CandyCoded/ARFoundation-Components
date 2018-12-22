@@ -103,7 +103,7 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
-        public static void RemoveAllSpawnedPlanesFromScene()
+        public static void SetActiveStateOfPlaneVisuals(bool activeState)
         {
 
             var planes = Object.FindObjectsOfType<ARPlane>();
@@ -111,7 +111,7 @@ namespace CandyCoded.ARFoundationComponents
             foreach (ARPlane plane in planes)
             {
 
-                Object.Destroy(plane.gameObject);
+                plane.gameObject.SetActive(activeState);
 
             }
 
