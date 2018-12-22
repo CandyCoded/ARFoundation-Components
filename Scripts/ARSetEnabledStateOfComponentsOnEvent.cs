@@ -3,18 +3,18 @@ using UnityEngine;
 namespace CandyCoded.ARFoundationComponents
 {
 
-    public class ARDisableComponentsOnEvent : MonoBehaviour
+    public class ARSetEnabledStateOfComponentsOnEvent : MonoBehaviour
     {
 
         public MonoBehaviour[] components;
 
-        public void DisableComponents()
+        public void SetEnabledStateOfComponents(bool enabledState)
         {
 
             foreach (var component in components)
             {
 
-                component.enabled = false;
+                component.enabled = enabledState;
 
             }
 
