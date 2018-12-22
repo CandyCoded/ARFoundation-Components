@@ -16,7 +16,7 @@ namespace CandyCoded.ARFoundationComponents
 
         private GameObject placementMarkerGameObject;
 
-        public void ShowPlacementMarkerOnPlane(bool planeVisible, Pose lookingAtPose, ARPlane lookingAtPlane)
+        public void ShowPlacementMarkerOnPlane(bool planeVisible, Pose pose, ARPlane plane)
         {
 
             if (planeVisible)
@@ -24,8 +24,8 @@ namespace CandyCoded.ARFoundationComponents
 
                 placementMarkerGameObject.SetActive(true);
 
-                placementMarkerGameObject.transform.position = lookingAtPose.position;
-                placementMarkerGameObject.transform.rotation = lookingAtPose.rotation;
+                placementMarkerGameObject.transform.position = pose.position;
+                placementMarkerGameObject.transform.rotation = pose.rotation;
 
             }
             else
