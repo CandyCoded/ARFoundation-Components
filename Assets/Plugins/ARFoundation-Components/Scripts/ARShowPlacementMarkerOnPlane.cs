@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
 
 namespace CandyCoded.ARFoundationComponents
 {
 
+    [RequireComponent(typeof(ARSessionOrigin))]
     public class ARShowPlacementMarkerOnPlane : MonoBehaviour
     {
 
@@ -16,6 +18,15 @@ namespace CandyCoded.ARFoundationComponents
 
         private GameObject placementMarkerGameObject;
 
+        public Camera mainCamera { get; private set; }
+
+        private void Awake()
+        {
+
+            mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+
+        }
+
         public void ShowPlacementMarkerOnPlane(bool planeVisible, Pose pose, ARPlane plane)
         {
 
@@ -26,6 +37,17 @@ namespace CandyCoded.ARFoundationComponents
 
                 placementMarkerGameObject.transform.position = pose.position;
                 placementMarkerGameObject.transform.rotation = pose.rotation;
+
+                if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
+                {
+
+                    placementMarkerGameObject.transform.LookAt(new Vector3(
+                        mainCamera.transform.position.x,
+                        placementMarkerGameObject.transform.position.y,
+                        mainCamera.transform.position.z
+                    ));
+
+                }
 
             }
             else

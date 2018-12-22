@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
 
 namespace CandyCoded.ARFoundationComponents
@@ -10,6 +11,7 @@ namespace CandyCoded.ARFoundationComponents
     {
     }
 
+    [RequireComponent(typeof(ARSessionOrigin))]
     public class ARPlaceObjectOnPlane : MonoBehaviour
     {
 
@@ -24,6 +26,15 @@ namespace CandyCoded.ARFoundationComponents
         public GameObjectPlacedEvent GameObjectPlaced;
 
         private bool objectToPlaceActiveState;
+
+        public Camera mainCamera { get; private set; }
+
+        private void Awake()
+        {
+
+            mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+
+        }
 
         public void PlaceObjectOnPlane(Pose pose, ARPlane plane)
         {
@@ -41,6 +52,17 @@ namespace CandyCoded.ARFoundationComponents
 
             objectToPlaceGameObject.transform.position = pose.position;
             objectToPlaceGameObject.transform.rotation = pose.rotation;
+
+            if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
+            {
+
+                objectToPlaceGameObject.transform.LookAt(new Vector3(
+                    mainCamera.transform.position.x,
+                    objectToPlaceGameObject.transform.position.y,
+                    mainCamera.transform.position.z
+                ));
+
+            }
 
             GameObjectPlaced?.Invoke(objectToPlaceGameObject);
 
