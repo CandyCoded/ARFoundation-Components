@@ -4,7 +4,17 @@
 
 -   ARDistanceFromPlane
 -   ARLightEstimation
--   ARPlaceObjectOnVisiblePlane
+-   ARPlaceObjectOnPlane
+-   ARPlaneEvents
+-   ARShowPlacementMarkerOnPlane
+-   ARSetActiveStateOfPlaneVisualsOnEvent
+-   SetEnabledStateOfObjectsOnEvent
+-   ARFoundationExtensions
+    -   CenterOfScreen
+    -   RaycastToPlane
+    -   IsLookingAtPlane
+    -   HasTouchedPlane
+    -   SetActiveStateOfPlaneVisuals
 
 ## Installation
 
@@ -19,24 +29,4 @@
         "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v1.1.0"
     }
 }
-```
-
-### Git Submodule
-
-#### Install
-
-```bash
-$ git submodule add git@github.com:CandyCoded/ARFoundation-Components.git Assets/Plugins/ARFoundation-Components/
-```
-
-After cloning repo with submodule already installed
-
-```bash
-$ git submodule init && git submodule update --remote
-```
-
-#### Update
-
-```bash
-$ git submodule update --remote
 ```
