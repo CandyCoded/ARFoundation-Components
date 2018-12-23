@@ -43,5 +43,5 @@
 1. Create a new **AR Default Plane** gameObject from the **Create Asset** context menu.
 1. Drag the **AR Default Plane** gameObject to **Assets** panel to create a prefab.
 1. Remove the **AR Default Plane** prefab gameObject from the scene.
-1. Attach the **AR Plane Manager** script to the **AR Session Origin** gameObject and drag the **AR Default Plane** prefab from the **Assets** panel into the **Plane Prefab** property.
+1. Attach the **AR Plane Manager** component to the **AR Session Origin** gameObject and drag the **AR Default Plane** prefab from the **Assets** panel into the **Plane Prefab** property.
 1. Change the **Detection Flags** to **Horizontal** (or whatever plane type you will be targeting).
