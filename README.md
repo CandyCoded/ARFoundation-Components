@@ -36,12 +36,12 @@
 ### Basic ARKit XR Plugin and AR Foundation Steps
 
 1. Create a new Unity project.
-1. Install **ARKit XR Plugin** and **AR Foundation** from Package Manager.
-1. Remove **Main Camera** gameObject from scene.
-1. Create new **AR Session Origin** gameObject from the **Create Asset** context menu.
-1. Create new **AR Session** gameObject from the **Create Asset** context menu.
-1. Create new **AR Default Plane** gameObject from the **Create Asset** context menu.
-1. Drag **AR Default Plane** gameObject to **Assets** panel to create a prefab.
-1. Remove **AR Default Plane** gameObject from scene.
-1. Attach the **AR Plane Manager** script to **AR Session Origin** and drag the just created prefab into the **Plane Prefab** property.
-1. Change **Detection Flags** to **Horizontal** (or whatever you are targeting).
+1. Install the **ARKit XR Plugin** and **AR Foundation** packages from the Package Manager.
+1. Remove the **Main Camera** gameObject from the scene.
+1. Create a new **AR Session Origin** gameObject from the **Create Asset** context menu.
+1. Create a new **AR Session** gameObject from the **Create Asset** context menu.
+1. Create a new **AR Default Plane** gameObject from the **Create Asset** context menu.
+1. Drag the **AR Default Plane** gameObject to **Assets** panel to create a prefab.
+1. Remove the **AR Default Plane** prefab gameObject from the scene.
+1. Attach the **AR Plane Manager** script to the **AR Session Origin** gameObject and drag the **AR Default Plane** prefab from the **Assets** panel into the **Plane Prefab** property.
+1. Change the **Detection Flags** to **Horizontal** (or whatever plane type you will be targeting).
