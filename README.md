@@ -33,6 +33,8 @@
 
 ## Setup
 
+See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working example of the following steps.
+
 ### Basic ARKit XR Plugin and AR Foundation Steps
 
 1. Create a new Unity project.
