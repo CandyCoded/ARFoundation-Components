@@ -20,6 +20,9 @@ namespace CandyCoded.ARFoundationComponents
 
         [SerializeField]
         private bool placeMultiple;
+
+        [SerializeField]
+        private float verticalOffset = 0.1f;
 #pragma warning restore CS0649
 
         public GameObjectPlacedEvent GameObjectPlaced;
@@ -49,7 +52,7 @@ namespace CandyCoded.ARFoundationComponents
 
             objectToPlaceGameObject.SetActive(true);
 
-            objectToPlaceGameObject.transform.position = pose.position;
+            objectToPlaceGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
             objectToPlaceGameObject.transform.rotation = pose.rotation;
 
             if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)

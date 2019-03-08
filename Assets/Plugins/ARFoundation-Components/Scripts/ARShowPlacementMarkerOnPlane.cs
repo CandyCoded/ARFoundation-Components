@@ -11,6 +11,9 @@ namespace CandyCoded.ARFoundationComponents
 
 #pragma warning disable CS0649
         public GameObject placementMarker;
+
+        [SerializeField]
+        private float verticalOffset = 0.1f;
 #pragma warning restore CS0649
 
         private bool placementMarkerActiveState;
@@ -34,7 +37,7 @@ namespace CandyCoded.ARFoundationComponents
 
                 placementMarkerGameObject.SetActive(true);
 
-                placementMarkerGameObject.transform.position = pose.position;
+                placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
                 placementMarkerGameObject.transform.rotation = pose.rotation;
 
                 if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
