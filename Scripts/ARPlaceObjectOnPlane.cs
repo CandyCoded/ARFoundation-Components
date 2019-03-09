@@ -22,7 +22,7 @@ namespace CandyCoded.ARFoundationComponents
         private bool placeMultiple;
 
         [SerializeField]
-        private float verticalOffset = 0.1f;
+        private float verticalOffset = 0.01f;
 #pragma warning restore CS0649
 
         public GameObjectPlacedEvent GameObjectPlaced;
