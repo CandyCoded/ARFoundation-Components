@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 
 namespace CandyCoded.ARFoundationComponents
@@ -58,10 +59,16 @@ namespace CandyCoded.ARFoundationComponents
 
                 PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
 
-                if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out Pose touchPose, out ARPlane touchPlane))
+                if (InputManager.GetInputDown(out int currentFingerId) && !EventSystem.current.IsPointerOverGameObject(currentFingerId))
                 {
 
-                    PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
+                    if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out Pose touchPose, out ARPlane touchPlane))
+                    {
+
+                        PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
+
+                    }
+
                     PlaneTouchedWithLookingAtPosition?.Invoke(lookingAtPose, lookingAtPlane);
 
                 }
