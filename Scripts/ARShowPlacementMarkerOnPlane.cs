@@ -30,7 +30,7 @@ namespace CandyCoded.ARFoundationComponents
         public void ShowPlacementMarkerOnPlane(bool planeVisible, Pose pose, ARPlane plane)
         {
 
-            if (planeVisible)
+            if (planeVisible && placementMarkerGameObject)
             {
 
                 placementMarkerGameObject.SetActive(true);
