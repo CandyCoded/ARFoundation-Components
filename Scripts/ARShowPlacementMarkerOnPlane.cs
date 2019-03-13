@@ -18,7 +18,11 @@ namespace CandyCoded.ARFoundationComponents
             set
             {
 
+                CleanupPlacementMarker();
+
                 _placementMarker = value;
+
+                SetupPlacementMarker();
 
             }
         }
