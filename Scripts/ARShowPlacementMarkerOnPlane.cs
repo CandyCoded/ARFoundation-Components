@@ -10,7 +10,18 @@ namespace CandyCoded.ARFoundationComponents
     {
 
 #pragma warning disable CS0649
-        public GameObject placementMarker;
+        [SerializeField]
+        private GameObject _placementMarker;
+        public GameObject placementMarker
+        {
+            get { return _placementMarker; }
+            set
+            {
+
+                _placementMarker = value;
+
+            }
+        }
         public float verticalOffset = 0.01f;
 #pragma warning restore CS0649
 
@@ -62,19 +73,19 @@ namespace CandyCoded.ARFoundationComponents
         private void SetupPlacementMarker()
         {
 
-            if (placementMarker)
+            if (_placementMarker)
             {
 
-                if (placementMarker.scene.IsValid())
+                if (_placementMarker.scene.IsValid())
                 {
 
-                    placementMarkerActiveState = placementMarker.activeSelf;
+                    placementMarkerActiveState = _placementMarker.activeSelf;
 
-                    placementMarker.SetActive(false);
+                    _placementMarker.SetActive(false);
 
                 }
 
-                placementMarkerGameObject = Instantiate(placementMarker);
+                placementMarkerGameObject = Instantiate(_placementMarker);
                 placementMarkerGameObject.SetActive(false);
 
             }
@@ -84,10 +95,10 @@ namespace CandyCoded.ARFoundationComponents
         private void CleanupPlacementMarker()
         {
 
-            if (placementMarker && placementMarker.scene.IsValid())
+            if (_placementMarker && _placementMarker.scene.IsValid())
             {
 
-                placementMarker.SetActive(placementMarkerActiveState);
+                _placementMarker.SetActive(placementMarkerActiveState);
 
             }
 
