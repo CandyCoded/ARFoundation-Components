@@ -17,12 +17,8 @@ namespace CandyCoded.ARFoundationComponents
 
 #pragma warning disable CS0649
         public GameObject objectToPlace;
-
-        [SerializeField]
-        private bool placeMultiple;
-
-        [SerializeField]
-        private float verticalOffset = 0.01f;
+        public bool placeMultiple;
+        public float verticalOffset = 0.01f;
 #pragma warning restore CS0649
 
         public GameObjectPlacedEvent GameObjectPlaced;
