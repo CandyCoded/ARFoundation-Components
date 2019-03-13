@@ -11,9 +11,7 @@ namespace CandyCoded.ARFoundationComponents
 
 #pragma warning disable CS0649
         public GameObject placementMarker;
-
-        [SerializeField]
-        private float verticalOffset = 0.01f;
+        public float verticalOffset = 0.01f;
 #pragma warning restore CS0649
 
         private bool placementMarkerActiveState;
