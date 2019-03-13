@@ -59,7 +59,7 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
-        private void OnEnable()
+        private void SetupPlacementMarker()
         {
 
             if (placementMarker.scene.IsValid())
@@ -74,9 +74,10 @@ namespace CandyCoded.ARFoundationComponents
             placementMarkerGameObject = Instantiate(placementMarker);
             placementMarkerGameObject.SetActive(false);
 
+
         }
 
-        private void OnDisable()
+        private void CleanupPlacementMarker()
         {
 
             if (placementMarker.scene.IsValid())
@@ -87,6 +88,20 @@ namespace CandyCoded.ARFoundationComponents
             }
 
             Destroy(placementMarkerGameObject);
+
+        }
+
+        private void OnEnable()
+        {
+
+            SetupPlacementMarker();
+
+        }
+
+        private void OnDisable()
+        {
+
+            CleanupPlacementMarker();
 
         }
 
