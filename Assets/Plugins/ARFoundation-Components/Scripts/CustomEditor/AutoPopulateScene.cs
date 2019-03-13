@@ -79,6 +79,8 @@ namespace CandyCoded.ARFoundationComponents
             var planeEvents = sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
             var placeObjectsOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
 
+            Selection.activeGameObject = sessionOrigin;
+
             UnityEventTools.AddPersistentListener(planeEvents.PlaneTouchedWithTouchPosition, placeObjectsOnPlane.PlaceObjectOnPlane);
 
             var cubePrefabPath = "Assets/Cube.prefab";
