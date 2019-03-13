@@ -62,32 +62,41 @@ namespace CandyCoded.ARFoundationComponents
         private void SetupPlacementMarker()
         {
 
-            if (placementMarker.scene.IsValid())
+            if (placementMarker)
             {
 
-                placementMarkerActiveState = placementMarker.activeSelf;
+                if (placementMarker.scene.IsValid())
+                {
 
-                placementMarker.SetActive(false);
+                    placementMarkerActiveState = placementMarker.activeSelf;
+
+                    placementMarker.SetActive(false);
+
+                }
+
+                placementMarkerGameObject = Instantiate(placementMarker);
+                placementMarkerGameObject.SetActive(false);
 
             }
-
-            placementMarkerGameObject = Instantiate(placementMarker);
-            placementMarkerGameObject.SetActive(false);
-
 
         }
 
         private void CleanupPlacementMarker()
         {
 
-            if (placementMarker.scene.IsValid())
+            if (placementMarker && placementMarker.scene.IsValid())
             {
 
                 placementMarker.SetActive(placementMarkerActiveState);
 
             }
 
-            Destroy(placementMarkerGameObject);
+            if (placementMarkerGameObject)
+            {
+
+                Destroy(placementMarkerGameObject);
+
+            }
 
         }
 
