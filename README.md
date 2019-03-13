@@ -61,3 +61,10 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 1. Change the build platform in the **Build Settings** window to **iOS**.
 1. In the **Player Settings** panel, make sure there is a string in the **Camera Usage Description** field, the **Target minimum iOS Version** is at least `11`, and **Architecture** is set to `ARM64`.
 1. When the **Unity.XR.ARKit will be stripped** dialog pops up, select **Yes, fix and build**.
+
+### Setup Android build
+
+1. Check that the scene is in the **Build Settings** window.
+1. Change the build platform in the **Build Settings** window to **Android**.
+1. In the **Player Settings** panel, make sure that **Multithreaded Rendering** is unchecked, the **Bundle Identifier** is set, and **Minimum API level** is set to `Android 7.0 'Nugget' (API level 24)`.
+1. If the **Android SDK is outdated** dialog appears, press **Use Highest Installed**.
