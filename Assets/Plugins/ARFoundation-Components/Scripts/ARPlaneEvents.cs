@@ -55,14 +55,14 @@ namespace CandyCoded.ARFoundationComponents
             if (planeManager.enabled)
             {
 
-                bool planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out Pose lookingAtPose, out ARPlane lookingAtPlane);
+                var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var lookingAtPose, out var lookingAtPlane);
 
                 PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
 
-                if (InputManager.GetInputDown(out int currentFingerId) && !EventSystem.current.IsPointerOverGameObject(currentFingerId))
+                if (InputManager.GetInputDown(out var currentFingerId) && !EventSystem.current.IsPointerOverGameObject(currentFingerId))
                 {
 
-                    if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out Pose touchPose, out ARPlane touchPlane))
+                    if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out var touchPose, out var touchPlane))
                     {
 
                         PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
