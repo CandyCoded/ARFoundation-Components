@@ -37,7 +37,7 @@ namespace CandyCoded.ARFoundationComponents
         public void PlaceObjectOnPlane(Pose pose, ARPlane plane)
         {
 
-            GameObject objectToPlaceGameObject = objectToPlace;
+            var objectToPlaceGameObject = objectToPlace;
 
             if (placeMultiple)
             {
