@@ -8,6 +8,7 @@ namespace CandyCoded.ARFoundationComponents
     [System.Serializable]
     public class DistanceUpdateEvent : UnityEvent<bool, float>
     {
+
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
@@ -18,6 +19,7 @@ namespace CandyCoded.ARFoundationComponents
         public DistanceUpdateEvent DistanceUpdate;
 
         public ARSessionOrigin sessionOrigin { get; private set; }
+
         public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()

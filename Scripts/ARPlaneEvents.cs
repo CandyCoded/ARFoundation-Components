@@ -9,11 +9,13 @@ namespace CandyCoded.ARFoundationComponents
     [System.Serializable]
     public class PlaneUpdatedEvent : UnityEvent<bool, Pose, ARPlane>
     {
+
     }
 
     [System.Serializable]
     public class PlaneTouchedEvent : UnityEvent<Pose, ARPlane>
     {
+
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
@@ -22,10 +24,13 @@ namespace CandyCoded.ARFoundationComponents
     {
 
         public PlaneUpdatedEvent PlaneUpdated;
+
         public PlaneTouchedEvent PlaneTouchedWithTouchPosition;
+
         public PlaneTouchedEvent PlaneTouchedWithLookingAtPosition;
 
         public ARSessionOrigin sessionOrigin { get; private set; }
+
         public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()
