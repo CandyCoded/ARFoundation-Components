@@ -9,13 +9,7 @@ namespace CandyCoded.ARFoundationComponents
     public static class ARFoundationExtensions
     {
 
-        public static Vector2 CenterOfScreen
-        {
-            get
-            {
-                return new Vector2(Screen.width, Screen.height) / 2;
-            }
-        }
+        public static Vector2 CenterOfScreen => new Vector2(Screen.width, Screen.height) / 2;
 
         public static bool RaycastToPlane(Vector3 position, ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, out Pose pose, out ARPlane plane)
         {
@@ -108,7 +102,7 @@ namespace CandyCoded.ARFoundationComponents
 
             var planes = Object.FindObjectsOfType<ARPlane>();
 
-            foreach (ARPlane plane in planes)
+            foreach (var plane in planes)
             {
 
                 plane.gameObject.SetActive(activeState);
