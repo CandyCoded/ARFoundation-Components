@@ -2,7 +2,8 @@
     "name": "CandyCoded.ARFoundationComponents",
     "references": [
         "CandyCoded",
-        "Unity.XR.ARFoundation"
+        "Unity.XR.ARFoundation",
+        "Unity.XR.ARSubsystems"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
@@ -11,5 +12,6 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": []
 }

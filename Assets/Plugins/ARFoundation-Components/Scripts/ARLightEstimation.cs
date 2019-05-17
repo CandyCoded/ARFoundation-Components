@@ -8,8 +8,17 @@ namespace CandyCoded.ARFoundationComponents
     public class ARLightEstimation : MonoBehaviour
     {
 
+        [SerializeField]
+        private ARCameraManager _cameraManager;
+
 #pragma warning disable CS0109
         public new Light light { get; private set; }
+
+        public new ARCameraManager cameraManager
+        {
+            get => _cameraManager;
+            set => _cameraManager = value;
+        }
 #pragma warning restore CS0109
 
         private void Awake()
@@ -22,8 +31,8 @@ namespace CandyCoded.ARFoundationComponents
         private void Start()
         {
 
-            if (ARSubsystemManager.systemState == ARSystemState.None ||
-                ARSubsystemManager.systemState == ARSystemState.Unsupported)
+            if (ARSession.state == ARSessionState.None ||
+                ARSession.state == ARSessionState.Unsupported)
             {
 
                 enabled = false;
@@ -65,14 +74,28 @@ namespace CandyCoded.ARFoundationComponents
         private void OnEnable()
         {
 
-            ARSubsystemManager.cameraFrameReceived += FrameChanged;
+            if (cameraManager == null)
+            {
+
+                return;
+
+            }
+
+            cameraManager.frameReceived += FrameChanged;
 
         }
 
         private void OnDisable()
         {
 
-            ARSubsystemManager.cameraFrameReceived -= FrameChanged;
+            if (cameraManager == null)
+            {
+
+                return;
+
+            }
+
+            cameraManager.frameReceived -= FrameChanged;
 
         }
 

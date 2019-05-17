@@ -19,6 +19,7 @@ namespace CandyCoded.ARFoundationComponents
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(ARRaycastManager))]
     [RequireComponent(typeof(ARPlaneManager))]
     public class ARPlaneEvents : MonoBehaviour
     {
@@ -31,12 +32,15 @@ namespace CandyCoded.ARFoundationComponents
 
         public ARSessionOrigin sessionOrigin { get; private set; }
 
+        public ARRaycastManager raycastManager { get; private set; }
+
         public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()
         {
 
             sessionOrigin = gameObject.GetComponent<ARSessionOrigin>();
+            raycastManager = gameObject.GetComponent<ARRaycastManager>();
             planeManager = gameObject.GetComponent<ARPlaneManager>();
 
         }
@@ -44,8 +48,8 @@ namespace CandyCoded.ARFoundationComponents
         private void Start()
         {
 
-            if (ARSubsystemManager.systemState == ARSystemState.None ||
-                ARSubsystemManager.systemState == ARSystemState.Unsupported)
+            if (ARSession.state == ARSessionState.None ||
+                ARSession.state == ARSessionState.Unsupported)
             {
 
                 enabled = false;
@@ -62,7 +66,7 @@ namespace CandyCoded.ARFoundationComponents
                 return;
             }
 
-            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var lookingAtPose, out var lookingAtPlane);
+            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(raycastManager, planeManager, out var lookingAtPose, out var lookingAtPlane);
 
             PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
 
@@ -71,7 +75,7 @@ namespace CandyCoded.ARFoundationComponents
                 return;
             }
 
-            if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out var touchPose, out var touchPlane))
+            if (ARFoundationExtensions.HasTouchedPlane(raycastManager, planeManager, out var touchPose, out var touchPlane))
             {
 
                 PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
