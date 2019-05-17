@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 namespace CandyCoded.ARFoundationComponents
 {
@@ -55,7 +55,7 @@ namespace CandyCoded.ARFoundationComponents
                 placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
                 placementMarkerGameObject.transform.rotation = pose.rotation;
 
-                if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
+                if (plane.alignment.Equals(PlaneAlignment.HorizontalUp | PlaneAlignment.HorizontalDown))
                 {
 
                     placementMarkerGameObject.transform.LookAt(new Vector3(

@@ -12,6 +12,7 @@ namespace CandyCoded.ARFoundationComponents
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(ARRaycastManager))]
     [RequireComponent(typeof(ARPlaneManager))]
     public class ARDistanceFromPlane : MonoBehaviour
     {
@@ -20,12 +21,15 @@ namespace CandyCoded.ARFoundationComponents
 
         public ARSessionOrigin sessionOrigin { get; private set; }
 
+        public ARRaycastManager raycastManager { get; private set; }
+
         public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()
         {
 
             sessionOrigin = gameObject.GetComponent<ARSessionOrigin>();
+            raycastManager = gameObject.GetComponent<ARRaycastManager>();
             planeManager = gameObject.GetComponent<ARPlaneManager>();
 
         }
@@ -33,8 +37,8 @@ namespace CandyCoded.ARFoundationComponents
         private void Start()
         {
 
-            if (ARSubsystemManager.systemState == ARSystemState.None ||
-                ARSubsystemManager.systemState == ARSystemState.Unsupported)
+            if (ARSession.state == ARSessionState.None ||
+                ARSession.state == ARSessionState.Unsupported)
             {
 
                 enabled = false;
@@ -51,7 +55,7 @@ namespace CandyCoded.ARFoundationComponents
                 return;
             }
 
-            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var pose);
+            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(raycastManager, planeManager, out var pose);
 
             var distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
 
