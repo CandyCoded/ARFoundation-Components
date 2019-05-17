@@ -9,6 +9,7 @@ namespace CandyCoded.ARFoundationComponents
     [System.Serializable]
     public class GameObjectPlacedEvent : UnityEvent<GameObject>
     {
+
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
@@ -17,7 +18,9 @@ namespace CandyCoded.ARFoundationComponents
 
 #pragma warning disable CS0649
         public GameObject objectToPlace;
+
         public bool placeMultiple;
+
         public float verticalOffset = 0.01f;
 #pragma warning restore CS0649
 
@@ -69,14 +72,14 @@ namespace CandyCoded.ARFoundationComponents
         private void OnEnable()
         {
 
-            if (objectToPlace && objectToPlace.scene.IsValid())
+            if (!objectToPlace || !objectToPlace.scene.IsValid())
             {
-
-                objectToPlaceActiveState = objectToPlace.activeSelf;
-
-                objectToPlace.SetActive(false);
-
+                return;
             }
+
+            objectToPlaceActiveState = objectToPlace.activeSelf;
+
+            objectToPlace.SetActive(false);
 
         }
 

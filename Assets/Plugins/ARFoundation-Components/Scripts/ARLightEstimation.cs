@@ -35,9 +35,9 @@ namespace CandyCoded.ARFoundationComponents
         private void FrameChanged(ARCameraFrameEventArgs args)
         {
 
-            float? averageBrightness = args.lightEstimation.averageBrightness;
-            float? averageColorTemperature = args.lightEstimation.averageColorTemperature;
-            Color? colorCorrection = args.lightEstimation.colorCorrection;
+            var averageBrightness = args.lightEstimation.averageBrightness;
+            var averageColorTemperature = args.lightEstimation.averageColorTemperature;
+            var colorCorrection = args.lightEstimation.colorCorrection;
 
             if (averageBrightness.HasValue)
             {

@@ -9,11 +9,13 @@ namespace CandyCoded.ARFoundationComponents
     [System.Serializable]
     public class PlaneUpdatedEvent : UnityEvent<bool, Pose, ARPlane>
     {
+
     }
 
     [System.Serializable]
     public class PlaneTouchedEvent : UnityEvent<Pose, ARPlane>
     {
+
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
@@ -22,10 +24,13 @@ namespace CandyCoded.ARFoundationComponents
     {
 
         public PlaneUpdatedEvent PlaneUpdated;
+
         public PlaneTouchedEvent PlaneTouchedWithTouchPosition;
+
         public PlaneTouchedEvent PlaneTouchedWithLookingAtPosition;
 
         public ARSessionOrigin sessionOrigin { get; private set; }
+
         public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()
@@ -52,28 +57,28 @@ namespace CandyCoded.ARFoundationComponents
         private void Update()
         {
 
-            if (planeManager.enabled)
+            if (!planeManager.enabled)
+            {
+                return;
+            }
+
+            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var lookingAtPose, out var lookingAtPlane);
+
+            PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
+
+            if (!InputManager.GetInputDown(out var currentFingerId) || EventSystem.current?.IsPointerOverGameObject(currentFingerId) == true)
+            {
+                return;
+            }
+
+            if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out var touchPose, out var touchPlane))
             {
 
-                var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var lookingAtPose, out var lookingAtPlane);
-
-                PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
-
-                if (InputManager.GetInputDown(out var currentFingerId) && EventSystem.current?.IsPointerOverGameObject(currentFingerId) != true)
-                {
-
-                    if (ARFoundationExtensions.HasTouchedPlane(sessionOrigin, planeManager, out var touchPose, out var touchPlane))
-                    {
-
-                        PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
-
-                    }
-
-                    PlaneTouchedWithLookingAtPosition?.Invoke(lookingAtPose, lookingAtPlane);
-
-                }
+                PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
 
             }
+
+            PlaneTouchedWithLookingAtPosition?.Invoke(lookingAtPose, lookingAtPlane);
 
         }
 

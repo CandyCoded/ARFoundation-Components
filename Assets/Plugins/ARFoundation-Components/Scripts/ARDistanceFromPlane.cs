@@ -8,6 +8,7 @@ namespace CandyCoded.ARFoundationComponents
     [System.Serializable]
     public class DistanceUpdateEvent : UnityEvent<bool, float>
     {
+
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
@@ -18,6 +19,7 @@ namespace CandyCoded.ARFoundationComponents
         public DistanceUpdateEvent DistanceUpdate;
 
         public ARSessionOrigin sessionOrigin { get; private set; }
+
         public ARPlaneManager planeManager { get; private set; }
 
         private void Awake()
@@ -44,16 +46,16 @@ namespace CandyCoded.ARFoundationComponents
         private void Update()
         {
 
-            if (planeManager.enabled && DistanceUpdate != null)
+            if (!planeManager.enabled || DistanceUpdate == null)
             {
-
-                var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var pose);
-
-                var distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
-
-                DistanceUpdate?.Invoke(planeVisible, Mathf.Abs(distanceFromPlane.magnitude));
-
+                return;
             }
+
+            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(sessionOrigin, planeManager, out var pose);
+
+            var distanceFromPlane = sessionOrigin.camera.transform.position - pose.position;
+
+            DistanceUpdate?.Invoke(planeVisible, Mathf.Abs(distanceFromPlane.magnitude));
 
         }
 

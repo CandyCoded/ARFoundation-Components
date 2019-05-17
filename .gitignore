@@ -62,3 +62,8 @@ ProjectSettings/
 
 *.log
 *.xml
+
+.idea/
+
+Assets/Plugins/Editor.meta
+Assets/Plugins/Editor/

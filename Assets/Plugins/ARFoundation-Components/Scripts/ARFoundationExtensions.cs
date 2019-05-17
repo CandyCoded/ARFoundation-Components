@@ -9,13 +9,7 @@ namespace CandyCoded.ARFoundationComponents
     public static class ARFoundationExtensions
     {
 
-        public static Vector2 CenterOfScreen
-        {
-            get
-            {
-                return new Vector2(Screen.width, Screen.height) / 2;
-            }
-        }
+        public static Vector2 CenterOfScreen => new Vector2(Screen.width, Screen.height) / 2;
 
         public static bool RaycastToPlane(Vector3 position, ARSessionOrigin sessionOrigin, ARPlaneManager planeManager, out Pose pose, out ARPlane plane)
         {
@@ -26,20 +20,18 @@ namespace CandyCoded.ARFoundationComponents
 
             plane = null;
 
-            if (sessionOrigin.Raycast(position, hits, TrackableType.PlaneWithinPolygon))
+            if (!sessionOrigin.Raycast(position, hits, TrackableType.PlaneWithinPolygon))
             {
-
-                var hit = hits[0];
-
-                pose = hit.pose;
-
-                plane = planeManager.TryGetPlane(hit.trackableId);
-
-                return true;
-
+                return false;
             }
 
-            return false;
+            var hit = hits[0];
+
+            pose = hit.pose;
+
+            plane = planeManager.TryGetPlane(hit.trackableId);
+
+            return true;
 
         }
 
@@ -71,21 +63,14 @@ namespace CandyCoded.ARFoundationComponents
 
             plane = null;
 
-            if (Input.touchSupported && Input.touchCount > 0)
+            if (!Input.touchSupported || Input.touchCount <= 0)
             {
-
-                var touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-
-                    return RaycastToPlane(touch.position, sessionOrigin, planeManager, out pose, out plane);
-
-                }
-
+                return false;
             }
 
-            return false;
+            var touch = Input.GetTouch(0);
+
+            return touch.phase == TouchPhase.Began && RaycastToPlane(touch.position, sessionOrigin, planeManager, out pose, out plane);
 
         }
 
@@ -108,7 +93,7 @@ namespace CandyCoded.ARFoundationComponents
 
             var planes = Object.FindObjectsOfType<ARPlane>();
 
-            foreach (ARPlane plane in planes)
+            foreach (var plane in planes)
             {
 
                 plane.gameObject.SetActive(activeState);

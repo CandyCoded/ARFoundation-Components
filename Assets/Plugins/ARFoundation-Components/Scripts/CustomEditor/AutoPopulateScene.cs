@@ -48,7 +48,7 @@ namespace CandyCoded.ARFoundationComponents
 
             }
 
-            var defaultPlanePrefabPath = "Assets/AR Default Plane.prefab";
+            const string defaultPlanePrefabPath = "Assets/AR Default Plane.prefab";
 
             var defaultPlanePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(defaultPlanePrefabPath);
 
@@ -83,7 +83,7 @@ namespace CandyCoded.ARFoundationComponents
 
             UnityEventTools.AddPersistentListener(planeEvents.PlaneTouchedWithTouchPosition, placeObjectsOnPlane.PlaceObjectOnPlane);
 
-            var cubePrefabPath = "Assets/Cube.prefab";
+            const string cubePrefabPath = "Assets/Cube.prefab";
 
             var cubePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(cubePrefabPath);
 
