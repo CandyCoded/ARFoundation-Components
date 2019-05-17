@@ -72,14 +72,14 @@ namespace CandyCoded.ARFoundationComponents
         private void OnEnable()
         {
 
-            if (objectToPlace && objectToPlace.scene.IsValid())
+            if (!objectToPlace || !objectToPlace.scene.IsValid())
             {
-
-                objectToPlaceActiveState = objectToPlace.activeSelf;
-
-                objectToPlace.SetActive(false);
-
+                return;
             }
+
+            objectToPlaceActiveState = objectToPlace.activeSelf;
+
+            objectToPlace.SetActive(false);
 
         }
 

@@ -14,17 +14,17 @@ namespace CandyCoded.ARFoundationComponents
             foreach (var obj in objects)
             {
 
-                if (obj is MonoBehaviour)
+                switch (obj)
                 {
+                    case MonoBehaviour behaviour:
+                        behaviour.enabled = enabledState;
 
-                    ((MonoBehaviour)obj).enabled = enabledState;
+                        break;
 
-                }
-                else if (obj is GameObject)
-                {
+                    case GameObject o:
+                        o.SetActive(enabledState);
 
-                    ((GameObject)obj).SetActive(enabledState);
-
+                        break;
                 }
 
             }
