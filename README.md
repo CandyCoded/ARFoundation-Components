@@ -18,15 +18,14 @@
 
 ## Installation
 
-### Unity Package Manager _(Unity 2018.3)_
-
-<https://docs.unity3d.com/Packages/com.unity.package-manager-ui@2.0/manual/index.html>
+### Unity Package Manager
 
 ```json
 {
     "dependencies": {
-        "com.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#upm",
-        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v1.1.6"
+        "com.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v2.0.0",
+        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v1.1.8",
+        "com.unity.xr.arfoundation": "2.1.0-preview.2"
     }
 }
 ```
@@ -60,7 +59,6 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 1. Check that the scene is in the **Build Settings** window.
 1. Change the build platform in the **Build Settings** window to **iOS**.
 1. In the **Player Settings** panel, make sure there is a string in the **Camera Usage Description** field, the **Target minimum iOS Version** is at least `11`, and **Architecture** is set to `ARM64`.
-1. When the **Unity.XR.ARKit will be stripped** dialog pops up, select **Yes, fix and build**.
 
 ### Setup Android build
 
