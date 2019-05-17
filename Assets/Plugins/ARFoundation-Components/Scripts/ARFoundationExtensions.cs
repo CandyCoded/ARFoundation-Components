@@ -20,20 +20,18 @@ namespace CandyCoded.ARFoundationComponents
 
             plane = null;
 
-            if (sessionOrigin.Raycast(position, hits, TrackableType.PlaneWithinPolygon))
+            if (!sessionOrigin.Raycast(position, hits, TrackableType.PlaneWithinPolygon))
             {
-
-                var hit = hits[0];
-
-                pose = hit.pose;
-
-                plane = planeManager.TryGetPlane(hit.trackableId);
-
-                return true;
-
+                return false;
             }
 
-            return false;
+            var hit = hits[0];
+
+            pose = hit.pose;
+
+            plane = planeManager.TryGetPlane(hit.trackableId);
+
+            return true;
 
         }
 
@@ -65,21 +63,14 @@ namespace CandyCoded.ARFoundationComponents
 
             plane = null;
 
-            if (Input.touchSupported && Input.touchCount > 0)
+            if (!Input.touchSupported || Input.touchCount <= 0)
             {
-
-                var touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-
-                    return RaycastToPlane(touch.position, sessionOrigin, planeManager, out pose, out plane);
-
-                }
-
+                return false;
             }
 
-            return false;
+            var touch = Input.GetTouch(0);
+
+            return touch.phase == TouchPhase.Began && RaycastToPlane(touch.position, sessionOrigin, planeManager, out pose, out plane);
 
         }
 
