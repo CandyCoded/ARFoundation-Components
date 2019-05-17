@@ -65,6 +65,8 @@ namespace CandyCoded.ARFoundationComponents
 
             var sessionOrigin = GameObject.Find("AR Session Origin");
 
+            sessionOrigin.AddOrGetComponent<ARRaycastManager>();
+
             var planeManager = sessionOrigin.AddOrGetComponent<ARPlaneManager>();
 
             planeManager.planePrefab = defaultPlanePrefab;
@@ -75,6 +77,13 @@ namespace CandyCoded.ARFoundationComponents
         {
 
             var sessionOrigin = GameObject.Find("AR Session Origin");
+
+            var camera = GameObject.Find("AR Camera");
+            var cameraManager = camera.AddOrGetComponent<ARCameraManager>();
+
+            var light = GameObject.Find("Directional Light");
+            var lightEstimation = light.AddOrGetComponent<ARLightEstimation>();
+            lightEstimation.cameraManager = cameraManager;
 
             var planeEvents = sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
             var placeObjectsOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();

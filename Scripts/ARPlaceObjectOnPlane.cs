@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 namespace CandyCoded.ARFoundationComponents
 {
@@ -54,7 +54,7 @@ namespace CandyCoded.ARFoundationComponents
             objectToPlaceGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
             objectToPlaceGameObject.transform.rotation = pose.rotation;
 
-            if (plane.boundedPlane.Alignment == PlaneAlignment.Horizontal)
+            if (plane.alignment.Equals(PlaneAlignment.HorizontalUp | PlaneAlignment.HorizontalDown))
             {
 
                 objectToPlaceGameObject.transform.LookAt(new Vector3(
