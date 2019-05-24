@@ -13,7 +13,9 @@ public class ARTrackedImageEvents : MonoBehaviour
     }
 
     public TrackedImageEvent TrackedImageAdded;
+
     public TrackedImageEvent TrackedImageUpdated;
+
     public TrackedImageEvent TrackedImageRemoved;
 
     private ARTrackedImageManager trackedImageManager;

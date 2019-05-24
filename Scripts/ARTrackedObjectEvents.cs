@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 
-[RequireComponent(typeof(ARTrackedImageManager))]
+[RequireComponent(typeof(ARTrackedObjectManager))]
 public class ARTrackedObjectEvents : MonoBehaviour
 {
 
@@ -13,7 +13,9 @@ public class ARTrackedObjectEvents : MonoBehaviour
     }
 
     public TrackedObjectEvent TrackedObjectAdded;
+
     public TrackedObjectEvent TrackedObjectUpdated;
+
     public TrackedObjectEvent TrackedObjectRemoved;
 
     private ARTrackedObjectManager trackedObjectManager;
