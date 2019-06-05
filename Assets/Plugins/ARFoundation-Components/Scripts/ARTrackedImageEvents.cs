@@ -23,7 +23,7 @@ public class ARTrackedImageEvents : MonoBehaviour
     private void Awake()
     {
 
-        trackedImageManager = GetComponent<ARTrackedImageManager>();
+        trackedImageManager = gameObject.GetComponent<ARTrackedImageManager>();
 
     }
 
