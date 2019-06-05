@@ -23,7 +23,7 @@ public class ARTrackedObjectEvents : MonoBehaviour
     private void Awake()
     {
 
-        trackedObjectManager = GetComponent<ARTrackedObjectManager>();
+        trackedObjectManager = gameObject.GetComponent<ARTrackedObjectManager>();
 
     }
 
