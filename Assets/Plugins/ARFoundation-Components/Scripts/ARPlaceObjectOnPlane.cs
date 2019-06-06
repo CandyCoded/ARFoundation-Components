@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
 namespace CandyCoded.ARFoundationComponents
 {
