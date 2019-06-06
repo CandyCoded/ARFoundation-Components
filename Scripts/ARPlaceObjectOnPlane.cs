@@ -54,16 +54,18 @@ namespace CandyCoded.ARFoundationComponents
             objectToPlaceGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
             objectToPlaceGameObject.transform.rotation = pose.rotation;
 
-            if (plane.alignment.Equals(PlaneAlignment.HorizontalUp | PlaneAlignment.HorizontalDown))
+            if (!plane.alignment.Equals(PlaneAlignment.HorizontalUp) && !plane.alignment.Equals(PlaneAlignment.HorizontalDown))
             {
-
-                objectToPlaceGameObject.transform.LookAt(new Vector3(
-                    mainCamera.transform.position.x,
-                    objectToPlaceGameObject.transform.position.y,
-                    mainCamera.transform.position.z
-                ));
-
+                return;
             }
+
+            var cameraPosition = mainCamera.transform.position;
+
+            objectToPlaceGameObject.transform.LookAt(new Vector3(
+                cameraPosition.x,
+                objectToPlaceGameObject.transform.position.y,
+                cameraPosition.z
+            ));
 
             GameObjectPlaced?.Invoke(objectToPlaceGameObject);
 
