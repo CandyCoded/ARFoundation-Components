@@ -6,6 +6,7 @@ namespace CandyCoded.ARFoundationComponents
 {
 
     [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(ARPlaneManager))]
     public class ARShowPlacementMarkerOnPlane : MonoBehaviour
     {
 
@@ -37,10 +38,13 @@ namespace CandyCoded.ARFoundationComponents
 
         public Camera mainCamera { get; private set; }
 
+        public ARPlaneManager planeManager { get; private set; }
+
         private void Awake()
         {
 
             mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+            planeManager = gameObject.GetComponent<ARPlaneManager>();
 
         }
 
@@ -55,7 +59,7 @@ namespace CandyCoded.ARFoundationComponents
                 placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
                 placementMarkerGameObject.transform.rotation = pose.rotation;
 
-                if (!plane.alignment.Equals(PlaneAlignment.HorizontalUp) && !plane.alignment.Equals(PlaneAlignment.HorizontalDown))
+                if (!plane.alignment.Equals(planeManager.detectionMode))
                 {
                     return;
                 }
