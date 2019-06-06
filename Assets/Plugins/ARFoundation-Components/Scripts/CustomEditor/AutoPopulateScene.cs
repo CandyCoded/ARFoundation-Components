@@ -181,7 +181,7 @@ namespace CandyCoded.ARFoundationComponents
 
             }
 
-            trackedImageManager.referenceLibrary = AssetDatabase.LoadAssetAtPath<XRReferenceImageLibrary>(imageReferenceLibraryPath);
+            trackedImageManager.referenceLibrary = referenceLibrary;
 
         }
 
