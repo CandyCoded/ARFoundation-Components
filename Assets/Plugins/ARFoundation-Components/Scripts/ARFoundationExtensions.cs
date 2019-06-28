@@ -55,14 +55,14 @@ namespace CandyCoded.ARFoundationComponents
         public static bool IsLookingAtPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager, out Pose pose)
         {
 
-            return RaycastToPlane(CenterOfScreen, raycastManager, planeManager, out pose, out _);
+            return RaycastToPlane(CenterOfScreen, raycastManager, planeManager, out pose, out var _);
 
         }
 
         public static bool IsLookingAtPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager)
         {
 
-            return RaycastToPlane(CenterOfScreen, raycastManager, planeManager, out _, out _);
+            return RaycastToPlane(CenterOfScreen, raycastManager, planeManager, out var _, out var _);
 
         }
 
