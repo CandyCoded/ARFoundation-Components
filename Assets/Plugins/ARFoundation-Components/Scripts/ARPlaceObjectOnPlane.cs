@@ -12,7 +12,6 @@ namespace CandyCoded.ARFoundationComponents
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
-    [RequireComponent(typeof(ARPlaneManager))]
     public class ARPlaceObjectOnPlane : MonoBehaviour
     {
 
@@ -30,13 +29,10 @@ namespace CandyCoded.ARFoundationComponents
 
         public Camera mainCamera { get; private set; }
 
-        public ARPlaneManager planeManager { get; private set; }
-
         private void Awake()
         {
 
             mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
-            planeManager = gameObject.GetComponent<ARPlaneManager>();
 
         }
 
@@ -57,7 +53,7 @@ namespace CandyCoded.ARFoundationComponents
             objectToPlaceGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
             objectToPlaceGameObject.transform.rotation = pose.rotation;
 
-            if (!plane.alignment.Equals(planeManager.detectionMode))
+            if (!plane.alignment.Equals(PlaneAlignment.HorizontalUp) && !plane.alignment.Equals(PlaneAlignment.HorizontalDown))
             {
                 return;
             }
