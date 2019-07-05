@@ -1,18 +1,18 @@
 {
-    "name": "com.candycoded.arfoundation-components",
-    "displayName": "ARFoundation-Components",
-    "version": "2.0.0",
-    "unity": "2019.1",
-    "description": "Generic components for use with ARFoundation",
-    "keywords": [
-        "components",
-        "extensions",
-        "ar",
-        "arcore",
-        "arkit"
-    ],
-    "dependencies": {
-        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v1.1.8",
-        "com.unity.xr.arfoundation": "2.1.0-preview.2"
-    }
+  "name": "com.candycoded.arfoundation-components",
+  "displayName": "ARFoundation-Components",
+  "version": "2.1.0",
+  "unity": "2019.1",
+  "description": "Generic components for use with ARFoundation",
+  "keywords": [
+    "components",
+    "extensions",
+    "ar",
+    "arcore",
+    "arkit"
+  ],
+  "dependencies": {
+    "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v2.0.0",
+    "com.unity.xr.arfoundation": "2.2.0-preview.2"
+  }
 }
