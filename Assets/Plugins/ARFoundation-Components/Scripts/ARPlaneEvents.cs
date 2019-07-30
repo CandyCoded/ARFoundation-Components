@@ -18,7 +18,6 @@ namespace CandyCoded.ARFoundationComponents
 
     }
 
-    [RequireComponent(typeof(ARSessionOrigin))]
     [RequireComponent(typeof(ARRaycastManager))]
     [RequireComponent(typeof(ARPlaneManager))]
     public class ARPlaneEvents : MonoBehaviour
@@ -30,7 +29,6 @@ namespace CandyCoded.ARFoundationComponents
 
         public PlaneTouchedEvent PlaneTouchedWithLookingAtPosition;
 
-        public ARSessionOrigin sessionOrigin { get; private set; }
 
         public ARRaycastManager raycastManager { get; private set; }
 
@@ -39,7 +37,6 @@ namespace CandyCoded.ARFoundationComponents
         private void Awake()
         {
 
-            sessionOrigin = gameObject.GetComponent<ARSessionOrigin>();
             raycastManager = gameObject.GetComponent<ARRaycastManager>();
             planeManager = gameObject.GetComponent<ARPlaneManager>();
 
