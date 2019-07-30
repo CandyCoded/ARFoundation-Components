@@ -29,10 +29,9 @@ namespace CandyCoded.ARFoundationComponents
 
         public PlaneTouchedEvent PlaneTouchedWithLookingAtPosition;
 
+        private ARRaycastManager raycastManager;
 
-        public ARRaycastManager raycastManager { get; private set; }
-
-        public ARPlaneManager planeManager { get; private set; }
+        private ARPlaneManager planeManager;
 
         private void Awake()
         {
