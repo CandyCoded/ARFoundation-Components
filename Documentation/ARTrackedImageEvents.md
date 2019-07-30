@@ -1,1 +1,3 @@
 ### ARTrackedImageEvents
+
+![](../Screenshots/ARTrackedImageEvents.png)
