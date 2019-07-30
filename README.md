@@ -3,17 +3,19 @@
 ## Features
 
 -   [ARDistanceFromPlane](Documentation/ARDistanceFromPlane.md)
--   [ARLightEstimation](Documentation/ARLightEstimation.md)
--   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
--   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
--   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
--   [ARSetActiveStateOfPlaneVisualsOnEvent](Documentation/ARSetActiveStateOfPlaneVisualsOnEvent.md)
 -   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
     -   CenterOfScreen
     -   RaycastToPlane
     -   IsLookingAtPlane
     -   HasTouchedPlane
     -   SetActiveStateOfPlaneVisuals
+-   [ARLightEstimation](Documentation/ARLightEstimation.md)
+-   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
+-   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
+-   [ARSetActiveStateOfPlaneVisualsOnEvent](Documentation/ARSetActiveStateOfPlaneVisualsOnEvent.md)
+-   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
+-   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
+-   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
 
 ## Installation
 
