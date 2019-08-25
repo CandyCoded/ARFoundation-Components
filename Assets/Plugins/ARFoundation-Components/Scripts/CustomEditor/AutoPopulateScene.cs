@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 namespace CandyCoded.ARFoundationComponents.Editor
 {
@@ -48,6 +49,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             var camera = GameObject.Find("AR Camera");
             var cameraManager = camera.AddOrGetComponent<ARCameraManager>();
+            cameraManager.lightEstimationMode = LightEstimationMode.AmbientIntensity;
 
             var light = GameObject.Find("Directional Light");
             var lightEstimation = light.AddOrGetComponent<ARLightEstimation>();
