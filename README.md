@@ -25,8 +25,8 @@
 {
     "dependencies": {
         "com.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v2.1.0",
-        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v2.0.0",
-        "com.unity.xr.arfoundation": "2.2.0-preview.2"
+        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v2.2.0",
+        "com.unity.xr.arfoundation": "2.2.0-preview.3",
     }
 }
 ```
@@ -35,21 +35,28 @@
 
 See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working example of the following steps.
 
+### Install Dependencies
+
+1. Install the **ARKit XR Plugin**, **ARCore XR Plugin** and **AR Foundation** packages from the Package Manager.
+1. Install both the **ARFoundation Components** and **CandyCoded** package (see above).
+
 ### Setup AR Foundation
 
-1. Install the **ARKit XR Plugin** and **AR Foundation** packages from the Package Manager.
-1. Create a new **AR Session Origin** gameObject from the **Create Asset** context menu.
+1. Create a new **AR Session Origin** gameObject from the **Create Asset / XR** context menu.
+1. Select the **AR Session Origin** gameObject and attach the **ARRaycastManager** component.
 1. Remove the **Main Camera** gameObject from the hierarchy (as the **AR Session Origin** contains its own camera).
-1. Create a new **AR Session** gameObject from the **Create Asset** context menu.
-1. Create a new **AR Default Plane** gameObject from the **Create Asset** context menu, drag it into the **Asset** panel creating a prefab and then removing it from the hierarchy.
+1. Create a new **AR Session** gameObject from the **Create Asset / XR** context menu.
+1. Select the **AR Camera** in the **AR Session Origin** gameObject and change the **Light Estimation Mode** on the **ARCameraManager** component to **AmbientIntensity**.
+1. Select the **Directional Light** gameObject and attach the **ARLightEstimation** component.
+1. Drag the **AR Camera** component into the **Camera Manager** property of the **ARLightEstimation** component.
+1. Create a new **AR Default Plane** gameObject from the **Create Asset / XR** context menu, drag it into the **Asset** panel creating a prefab and then remove it from the hierarchy.
 1. Attach the **AR Plane Manager** component to the **AR Session Origin** gameObject and drag the **AR Default Plane** prefab from the **Assets** panel into the **Plane Prefab** property.
 1. Change the **Detection Flags** to **Horizontal** (or whatever plane type you will target).
 
 ### Setup ARFoundation Components
 
-1. Install both the **ARFoundation Components** and **CandyCoded** package (see above).
 1. Attach the **AR Plane Events** and **AR Place Object On Plane** components to the **AR Session Origin** gameObject.
-1. Create a new **Cube** and set the scale to `Vector3(0.1f, 0.1f, 0.1f)`, drag it into the **Asset** panel creating a prefab and then removing it from the hierarchy.
+1. Create a new **Cube** and set the scale to `Vector3(0.1f, 0.1f, 0.1f)`, drag it into the **Asset** panel creating a prefab and then remove it from the hierarchy.
 1. Drag the **Cube** into the **Object to Place** property of the **AR Place Object On Plane** component and enable the option **Place Multiple**.
 1. Create a new event in the **Plane Touched with Touch Position** event section of the **AR Plane Events** component.
 1. Drag the **AR Session Origin** gameObject into the object field of the event.
