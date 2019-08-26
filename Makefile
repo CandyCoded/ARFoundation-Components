@@ -1,8 +1,11 @@
+test:
+	echo "Error: no tests specified"
+
 clean:
-	rm -rf Library/
-	rm -rf Packages/
-	rm -rf ProjectSettings/
-	rm -f unity.log
+	git clean -xdf
 
 deploy:
 	git subtree push --prefix Assets/Plugins/ARFoundation-Components origin upm
+
+deploy-force:
+	git push origin `git subtree split --prefix Assets/Plugins/ARFoundation-Components master`:upm --force
