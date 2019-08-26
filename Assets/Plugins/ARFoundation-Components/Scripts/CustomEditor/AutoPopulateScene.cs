@@ -64,6 +64,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
                 var lightComponent = light.GetComponent<Light>();
 
+                lightComponent.color = new Color(1, 0.957f, 0.839f, 1);
                 lightComponent.shadows = LightShadows.Soft;
 
             }
