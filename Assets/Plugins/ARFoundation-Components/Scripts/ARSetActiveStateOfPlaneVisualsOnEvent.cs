@@ -5,6 +5,8 @@ using UnityEngine;
 namespace CandyCoded.ARFoundationComponents
 {
 
+    [HelpURL(
+        "https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARSetActiveStateOfPlaneVisualsOnEvent.md")]
     public class ARSetActiveStateOfPlaneVisualsOnEvent : MonoBehaviour
     {
 

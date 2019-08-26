@@ -4,68 +4,75 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 
-[RequireComponent(typeof(ARTrackedObjectManager))]
-public class ARTrackedObjectEvents : MonoBehaviour
+namespace CandyCoded.ARFoundationComponents
 {
 
-    [System.Serializable]
-    public class TrackedObjectEvent : UnityEvent<ARTrackedObject>
+    [RequireComponent(typeof(ARTrackedObjectManager))]
+    [HelpURL(
+        "https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARTrackedObjectEvents.md")]
+    public class ARTrackedObjectEvents : MonoBehaviour
     {
 
-    }
-
-    public TrackedObjectEvent TrackedObjectAdded;
-
-    public TrackedObjectEvent TrackedObjectUpdated;
-
-    public TrackedObjectEvent TrackedObjectRemoved;
-
-    private ARTrackedObjectManager trackedObjectManager;
-
-    private void Awake()
-    {
-
-        trackedObjectManager = gameObject.GetComponent<ARTrackedObjectManager>();
-
-    }
-
-    private void OnTrackedObjectChanged(ARTrackedObjectsChangedEventArgs eventArgs)
-    {
-
-        foreach (var trackedObject in eventArgs.added)
+        [System.Serializable]
+        public class TrackedObjectEvent : UnityEvent<ARTrackedObject>
         {
-
-            TrackedObjectAdded?.Invoke(trackedObject);
 
         }
 
-        foreach (var trackedObject in eventArgs.updated)
+        public TrackedObjectEvent TrackedObjectAdded;
+
+        public TrackedObjectEvent TrackedObjectUpdated;
+
+        public TrackedObjectEvent TrackedObjectRemoved;
+
+        private ARTrackedObjectManager trackedObjectManager;
+
+        private void Awake()
         {
 
-            TrackedObjectUpdated?.Invoke(trackedObject);
+            trackedObjectManager = gameObject.GetComponent<ARTrackedObjectManager>();
 
         }
 
-        foreach (var trackedObject in eventArgs.removed)
+        private void OnTrackedObjectChanged(ARTrackedObjectsChangedEventArgs eventArgs)
         {
 
-            TrackedObjectRemoved?.Invoke(trackedObject);
+            foreach (var trackedObject in eventArgs.added)
+            {
+
+                TrackedObjectAdded?.Invoke(trackedObject);
+
+            }
+
+            foreach (var trackedObject in eventArgs.updated)
+            {
+
+                TrackedObjectUpdated?.Invoke(trackedObject);
+
+            }
+
+            foreach (var trackedObject in eventArgs.removed)
+            {
+
+                TrackedObjectRemoved?.Invoke(trackedObject);
+
+            }
 
         }
 
-    }
+        private void OnEnable()
+        {
 
-    private void OnEnable()
-    {
+            trackedObjectManager.trackedObjectsChanged += OnTrackedObjectChanged;
 
-        trackedObjectManager.trackedObjectsChanged += OnTrackedObjectChanged;
+        }
 
-    }
+        private void OnDisable()
+        {
 
-    private void OnDisable()
-    {
+            trackedObjectManager.trackedObjectsChanged -= OnTrackedObjectChanged;
 
-        trackedObjectManager.trackedObjectsChanged -= OnTrackedObjectChanged;
+        }
 
     }
 

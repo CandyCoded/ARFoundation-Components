@@ -15,6 +15,7 @@ namespace CandyCoded.ARFoundationComponents
     }
 
     [RequireComponent(typeof(ARSessionOrigin))]
+    [HelpURL("https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARPlaceObjectOnPlane.md")]
     public class ARPlaceObjectOnPlane : MonoBehaviour
     {
 

@@ -34,7 +34,8 @@ namespace CandyCoded.ARFoundationComponents.Editor
             var sessionOrigin = GameObject.Find("AR Session Origin");
             var trackedImageManager = sessionOrigin.AddOrGetComponent<ARTrackedImageManager>();
 
-            trackedImageManager.trackedImagePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
+            trackedImageManager.trackedImagePrefab =
+                AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
 
             var referenceLibrary = AssetDatabase.LoadAssetAtPath<XRReferenceImageLibrary>(imageReferenceLibraryPath);
 

@@ -47,7 +47,6 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
         }
 
-
         private static void SetupARFoundationComponentsPlaneDetection()
         {
 
@@ -62,7 +61,9 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             Selection.activeGameObject = sessionOrigin;
 
-            placeObjectOnPlane.objectToPlace = AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
+            placeObjectOnPlane.objectToPlace =
+                AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
+
             placeObjectOnPlane.placeMultiple = true;
 
             EditorApplication.update += AddPlaneEvent;
@@ -81,7 +82,8 @@ namespace CandyCoded.ARFoundationComponents.Editor
                 return;
             }
 
-            UnityEventTools.AddPersistentListener(planeEvents.PlaneTouchedWithTouchPosition, placeObjectsOnPlane.PlaceObjectOnPlane);
+            UnityEventTools.AddPersistentListener(planeEvents.PlaneTouchedWithTouchPosition,
+                placeObjectsOnPlane.PlaceObjectOnPlane);
 
             EditorApplication.update -= AddPlaneEvent;
 

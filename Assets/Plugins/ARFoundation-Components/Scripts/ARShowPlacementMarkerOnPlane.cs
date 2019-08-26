@@ -8,6 +8,8 @@ namespace CandyCoded.ARFoundationComponents
 {
 
     [RequireComponent(typeof(ARSessionOrigin))]
+    [HelpURL(
+        "https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARShowPlacementMarkerOnPlane.md")]
     public class ARShowPlacementMarkerOnPlane : MonoBehaviour
     {
 
@@ -57,7 +59,8 @@ namespace CandyCoded.ARFoundationComponents
                 placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
                 placementMarkerGameObject.transform.rotation = pose.rotation;
 
-                if (plane.alignment.Equals(PlaneAlignment.None) || plane.alignment.Equals(PlaneAlignment.NotAxisAligned))
+                if (plane.alignment.Equals(PlaneAlignment.None) ||
+                    plane.alignment.Equals(PlaneAlignment.NotAxisAligned))
                 {
                     return;
                 }

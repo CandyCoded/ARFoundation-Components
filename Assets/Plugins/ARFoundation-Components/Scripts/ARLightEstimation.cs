@@ -7,6 +7,7 @@ namespace CandyCoded.ARFoundationComponents
 {
 
     [RequireComponent(typeof(Light))]
+    [HelpURL("https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARLightEstimation.md")]
     public class ARLightEstimation : MonoBehaviour
     {
 

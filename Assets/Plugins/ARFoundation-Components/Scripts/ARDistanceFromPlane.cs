@@ -1,8 +1,8 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
 using UnityEngine.Events;
+using UnityEngine.XR.ARFoundation;
 
 namespace CandyCoded.ARFoundationComponents
 {
@@ -16,6 +16,7 @@ namespace CandyCoded.ARFoundationComponents
     [RequireComponent(typeof(ARSessionOrigin))]
     [RequireComponent(typeof(ARRaycastManager))]
     [RequireComponent(typeof(ARPlaneManager))]
+    [HelpURL("https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARDistanceFromPlane.md")]
     public class ARDistanceFromPlane : MonoBehaviour
     {
 

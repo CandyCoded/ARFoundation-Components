@@ -4,68 +4,74 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 
-[RequireComponent(typeof(ARTrackedImageManager))]
-public class ARTrackedImageEvents : MonoBehaviour
+namespace CandyCoded.ARFoundationComponents
 {
 
-    [System.Serializable]
-    public class TrackedImageEvent : UnityEvent<ARTrackedImage>
+    [RequireComponent(typeof(ARTrackedImageManager))]
+    [HelpURL("https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARTrackedImageEvents.md")]
+    public class ARTrackedImageEvents : MonoBehaviour
     {
 
-    }
-
-    public TrackedImageEvent TrackedImageAdded;
-
-    public TrackedImageEvent TrackedImageUpdated;
-
-    public TrackedImageEvent TrackedImageRemoved;
-
-    private ARTrackedImageManager trackedImageManager;
-
-    private void Awake()
-    {
-
-        trackedImageManager = gameObject.GetComponent<ARTrackedImageManager>();
-
-    }
-
-    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
-    {
-
-        foreach (var trackedImage in eventArgs.added)
+        [System.Serializable]
+        public class TrackedImageEvent : UnityEvent<ARTrackedImage>
         {
-
-            TrackedImageAdded?.Invoke(trackedImage);
 
         }
 
-        foreach (var trackedImage in eventArgs.updated)
+        public TrackedImageEvent TrackedImageAdded;
+
+        public TrackedImageEvent TrackedImageUpdated;
+
+        public TrackedImageEvent TrackedImageRemoved;
+
+        private ARTrackedImageManager trackedImageManager;
+
+        private void Awake()
         {
 
-            TrackedImageUpdated?.Invoke(trackedImage);
+            trackedImageManager = gameObject.GetComponent<ARTrackedImageManager>();
 
         }
 
-        foreach (var trackedImage in eventArgs.removed)
+        private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
         {
 
-            TrackedImageRemoved?.Invoke(trackedImage);
+            foreach (var trackedImage in eventArgs.added)
+            {
+
+                TrackedImageAdded?.Invoke(trackedImage);
+
+            }
+
+            foreach (var trackedImage in eventArgs.updated)
+            {
+
+                TrackedImageUpdated?.Invoke(trackedImage);
+
+            }
+
+            foreach (var trackedImage in eventArgs.removed)
+            {
+
+                TrackedImageRemoved?.Invoke(trackedImage);
+
+            }
 
         }
 
-    }
+        private void OnEnable()
+        {
 
-    private void OnEnable()
-    {
+            trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
 
-        trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+        }
 
-    }
+        private void OnDisable()
+        {
 
-    private void OnDisable()
-    {
+            trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
 
-        trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+        }
 
     }
 
