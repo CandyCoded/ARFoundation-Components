@@ -39,7 +39,7 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 
 ### Install Dependencies
 
-1. Install the **ARKit XR Plugin**, **ARCore XR Plugin** and **AR Foundation** packages from the Package Manager.
+1. Install the latest (preview) **ARKit XR Plugin**, **ARCore XR Plugin** and **AR Foundation** packages from the Package Manager.
 1. Install both the **ARFoundation Components** and **CandyCoded** package (see above).
 
 ### Setup AR Foundation
