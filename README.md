@@ -39,7 +39,7 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 
 ### Install Dependencies
 
-1. Install the latest (preview) **ARKit XR Plugin**, **ARCore XR Plugin** and **AR Foundation** packages from the Package Manager.
+1. Install the latest **ARKit XR Plugin**, **ARCore XR Plugin** and **AR Foundation** (preview) packages from the Package Manager.
 1. Install both the **ARFoundation Components** and **CandyCoded** package (see above).
 
 ### Setup AR Foundation
@@ -74,5 +74,5 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 
 1. Check that the scene is in the **Build Settings** window.
 1. Change the build platform in the **Build Settings** window to **Android**.
-1. In the **Player Settings** panel, make sure that **Multithreaded Rendering** is unchecked, the **Bundle Identifier** is set, and **Minimum API level** is set to `Android 7.0 'Nugget' (API level 24)`.
+1. In the **Player Settings** panel, make sure that **Vulcan** is not in the list of **Graphic APIs**, **Multithreaded Rendering** is unchecked, the **Bundle Identifier** is set, and **Minimum API level** is set to `Android 7.0 'Nugget' (API level 24)`.
 1. If the **Android SDK is outdated** dialog appears, press **Use Highest Installed**.
