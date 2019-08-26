@@ -1,5 +1,7 @@
 # ARFoundation Components
 
+> 📱 Generic components for use with Unity's AR Foundation package
+
 ## Features
 
 -   [ARDistanceFromPlane](Documentation/ARDistanceFromPlane.md)
