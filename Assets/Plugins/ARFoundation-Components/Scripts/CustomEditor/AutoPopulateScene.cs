@@ -54,6 +54,20 @@ namespace CandyCoded.ARFoundationComponents.Editor
             cameraManager.lightEstimationMode = LightEstimationMode.AmbientIntensity;
 
             var light = GameObject.Find("Directional Light");
+
+            if (!light)
+            {
+
+                EditorApplication.ExecuteMenuItem("GameObject/Light/Directional Light");
+
+                light = GameObject.Find("Directional Light");
+
+                var lightComponent = light.GetComponent<Light>();
+
+                lightComponent.shadows = LightShadows.Soft;
+
+            }
+
             var lightEstimation = light.AddOrGetComponent<ARLightEstimation>();
             lightEstimation.cameraManager = cameraManager;
 
