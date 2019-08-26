@@ -4,11 +4,11 @@
 
 -   [ARDistanceFromPlane](Documentation/ARDistanceFromPlane.md)
 -   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
-    -   CenterOfScreen
-    -   RaycastToPlane
-    -   IsLookingAtPlane
-    -   HasTouchedPlane
-    -   SetActiveStateOfPlaneVisuals
+    -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
+    -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
+    -   [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
+    -   [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
+    -   [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
 -   [ARLightEstimation](Documentation/ARLightEstimation.md)
 -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
 -   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
