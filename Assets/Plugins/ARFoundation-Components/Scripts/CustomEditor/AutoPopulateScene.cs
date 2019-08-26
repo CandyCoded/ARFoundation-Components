@@ -24,6 +24,10 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             }
 
+            var sessionOrigin = GameObject.Find("AR Session Origin");
+
+            sessionOrigin.AddOrGetComponent<ARRaycastManager>();
+
             var mainCamera = GameObject.Find("Main Camera");
 
             if (mainCamera)
@@ -39,10 +43,6 @@ namespace CandyCoded.ARFoundationComponents.Editor
                 EditorApplication.ExecuteMenuItem("GameObject/XR/AR Session");
 
             }
-
-            var sessionOrigin = GameObject.Find("AR Session Origin");
-
-            sessionOrigin.AddOrGetComponent<ARRaycastManager>();
 
         }
 
