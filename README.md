@@ -27,8 +27,8 @@
 {
     "dependencies": {
         "com.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v2.1.0",
-        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v2.2.0",
-        "com.unity.xr.arfoundation": "2.2.0-preview.3",
+        "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v2.3.0",
+        "com.unity.xr.arfoundation": "3.0.0-preview.1"
     }
 }
 ```
