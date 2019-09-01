@@ -1,5 +1,6 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -12,7 +13,7 @@ namespace CandyCoded.ARFoundationComponents
     public class ARTrackedImageEvents : MonoBehaviour
     {
 
-        [System.Serializable]
+        [Serializable]
         public class TrackedImageEvent : UnityEvent<ARTrackedImage>
         {
 
