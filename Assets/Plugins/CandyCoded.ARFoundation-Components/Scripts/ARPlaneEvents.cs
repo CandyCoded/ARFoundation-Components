@@ -10,13 +10,7 @@ namespace CandyCoded.ARFoundationComponents
 {
 
     [Serializable]
-    public class PlaneUpdatedEvent : UnityEvent<bool, Pose, ARPlane>
-    {
-
-    }
-
-    [Serializable]
-    public class PlaneTouchedEvent : UnityEvent<Pose, ARPlane>
+    public class PlaneEvent : UnityEvent<Pose, ARPlane>
     {
 
     }
@@ -27,11 +21,11 @@ namespace CandyCoded.ARFoundationComponents
     public class ARPlaneEvents : MonoBehaviour
     {
 
-        public PlaneUpdatedEvent PlaneUpdated;
+        public PlaneEvent PlaneUpdated;
 
-        public PlaneTouchedEvent PlaneTouchedWithTouchPosition;
+        public PlaneEvent PlaneTouchedWithTouchPosition;
 
-        public PlaneTouchedEvent PlaneTouchedWithLookingAtPosition;
+        public PlaneEvent PlaneTouchedWithLookingAtPosition;
 
         private ARRaycastManager raycastManager;
 
@@ -69,7 +63,12 @@ namespace CandyCoded.ARFoundationComponents
             var planeVisible = ARFoundationExtensions.IsLookingAtPlane(raycastManager, planeManager,
                 out var lookingAtPose, out var lookingAtPlane);
 
-            PlaneUpdated?.Invoke(planeVisible, lookingAtPose, lookingAtPlane);
+            if (!planeVisible)
+            {
+                return;
+            }
+
+            PlaneUpdated?.Invoke(lookingAtPose, lookingAtPlane);
 
             if (!InputManager.GetInputDown(out var currentFingerId) || EventSystem.current &&
                 EventSystem.current.IsPointerOverGameObject(currentFingerId))
@@ -80,9 +79,7 @@ namespace CandyCoded.ARFoundationComponents
             if (ARFoundationExtensions.HasTouchedPlane(raycastManager, planeManager, out var touchPose,
                 out var touchPlane))
             {
-
                 PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
-
             }
 
             PlaneTouchedWithLookingAtPosition?.Invoke(lookingAtPose, lookingAtPlane);
