@@ -13,7 +13,6 @@
 -   [ARLightEstimation](Documentation/ARLightEstimation.md)
 -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
 -   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
--   [ARSetActiveStateOfPlaneVisualsOnEvent](Documentation/ARSetActiveStateOfPlaneVisualsOnEvent.md)
 -   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
 -   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
 -   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
