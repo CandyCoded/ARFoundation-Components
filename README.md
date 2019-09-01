@@ -4,7 +4,6 @@
 
 ## Features
 
--   [ARDistanceFromPlane](Documentation/ARDistanceFromPlane.md)
 -   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
     -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
     -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
