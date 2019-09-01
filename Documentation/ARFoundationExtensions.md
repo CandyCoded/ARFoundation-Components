@@ -2,7 +2,7 @@
 
 #### CenterOfScreen
 
-Returns a Vector2 that is half the screen's current width and height.
+Returns a `Vector2` that is half the screen's current width and height.
 
 ```csharp
 Debug.Log(CenterOfScreen);
@@ -10,7 +10,7 @@ Debug.Log(CenterOfScreen);
 
 #### RaycastToPlane
 
-Raycast from Vector2 screen point. Returns true if raycast collides with a plane. Also returns collision pose and `ARPlane`.
+Raycast from `Vector2` screen point. Returns true if raycast collides with a plane. Also returns collision pose and `ARPlane`.
 
 ```csharp
 if (RaycastToPlane(CenterOfScreen, raycastManager, planeManager, out var pose, out var plane)) {
