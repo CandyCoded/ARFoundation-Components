@@ -1,5 +1,6 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -8,13 +9,13 @@ using UnityEngine.XR.ARFoundation;
 namespace CandyCoded.ARFoundationComponents
 {
 
-    [System.Serializable]
+    [Serializable]
     public class PlaneUpdatedEvent : UnityEvent<bool, Pose, ARPlane>
     {
 
     }
 
-    [System.Serializable]
+    [Serializable]
     public class PlaneTouchedEvent : UnityEvent<Pose, ARPlane>
     {
 
