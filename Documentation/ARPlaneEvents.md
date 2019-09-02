@@ -8,4 +8,4 @@
 | `PlaneTouchedWithTouchPosition` | `Pose`, `ARPlane` | Fires whenever an `ARPlane` is visible and is touched. |
 | `PlaneTouchedWithLookingAtPosition` | `Pose`, `ARPlane` | Fires whenever an `ARPlane` is visible and the screen is touched. |
 
-![](../Screenshots/ARPlaneEvents.png)
+<img src="../Screenshots/ARPlaneEvents.png" width="400">

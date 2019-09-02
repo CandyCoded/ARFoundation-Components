@@ -1,3 +1,3 @@
 ### ARShowPlacementMarkerOnPlane
 
-![](../Screenshots/ARShowPlacementMarkerOnPlane.png)
+<img src="../Screenshots/ARShowPlacementMarkerOnPlane.png" width="400">

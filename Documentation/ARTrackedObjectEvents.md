@@ -10,4 +10,4 @@ A component used to track objects targets in AR. Object targets are managed thro
 | `TrackedObjectUpdated` | `ARTrackedObject` | Fires whenever an `ARTrackedObject` is tracked and updated. |
 | `TrackedObjectRemoved` | `ARTrackedObject` | Fires whenever an `ARTrackedObject` is no longer being tracked. |
 
-![](../Screenshots/ARTrackedObjectEvents.png)
+<img src="../Screenshots/ARTrackedObjectEvents.png" width="400">

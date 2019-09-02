@@ -1,3 +1,3 @@
 ### ARPlaceObjectOnPlane
 
-![](../Screenshots/ARPlaceObjectOnPlane.png)
+<img src="../Screenshots/ARPlaceObjectOnPlane.png" width="400">
