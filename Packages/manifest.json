@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#upm",
+    "com.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v2.4.0",
     "com.unity.ide.rider": "1.1.0",
     "com.unity.ugui": "1.0.0",
     "com.unity.xr.arfoundation": "3.0.0-preview.1",
@@ -14,8 +14,8 @@
   },
   "lock": {
     "com.candycoded.candycoded": {
-      "hash": "88817c9343b182df6f217cc754ea29d1ff0cae51",
-      "revision": "upm"
+      "hash": "bedced58676d32aeb1f32145c242452ac17936b7",
+      "revision": "v2.4.0"
     }
   }
 }
