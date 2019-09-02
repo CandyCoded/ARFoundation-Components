@@ -68,9 +68,9 @@ if (HasTouchedPlane(raycastManager, planeManager)) {
 Disables/enables all `ARPlane` gameObjects.
 
 ```csharp
-SetActiveStateOfPlaneVisuals(false); // disables all ARPlane gameObjects
+planeManager.SetActiveStateOfPlaneVisuals(false); // disables ARPlane gameObjects
 ```
 
 ```csharp
-SetActiveStateOfPlaneVisuals(true); // enables all ARPlane gameObjects
+planeManager.SetActiveStateOfPlaneVisuals(true); // enables ARPlane gameObjects
 ```
