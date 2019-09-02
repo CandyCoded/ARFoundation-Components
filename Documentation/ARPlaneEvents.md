@@ -1,5 +1,7 @@
 ### ARPlaneEvents
 
+#### Events
+
 | Name | Attributes | Description |
 | ---- | ---------- | ----------- |
 | `PlaneUpdated` | `Pose`, `ARPlane` | Fires whenever an `ARPlane` is visible. |
