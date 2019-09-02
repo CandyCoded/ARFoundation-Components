@@ -104,15 +104,13 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
-        public static void SetActiveStateOfPlaneVisuals(bool activeState)
+        public static void SetActiveStateOfPlaneVisuals(this ARPlaneManager planeManager, bool activeState)
         {
 
-            var planes = Object.FindObjectsOfType<ARPlane>();
-
-            foreach (var plane in planes)
+            foreach (var trackable in planeManager.trackables)
             {
 
-                plane.gameObject.SetActive(activeState);
+                trackable.gameObject.SetActive(activeState);
 
             }
 
