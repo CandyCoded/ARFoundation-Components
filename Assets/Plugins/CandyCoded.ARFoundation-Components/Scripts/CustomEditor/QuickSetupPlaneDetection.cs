@@ -12,6 +12,12 @@ namespace CandyCoded.ARFoundationComponents.Editor
     public static class QuickSetupPlaneDetection
     {
 
+        private const string defaultPlaneName = "AR Default Plane";
+
+        private const string defaultPlaneMenuPath = "GameObject/XR/AR Default Plane";
+
+        private const string sessionOriginName = "AR Session Origin";
+
         private const string defaultPlanePrefabPath = "Assets/AR Default Plane.prefab";
 
         [MenuItem("Window/CandyCoded/ARFoundation Components/Quick Setup/Plane Detection")]
@@ -21,40 +27,33 @@ namespace CandyCoded.ARFoundationComponents.Editor
             EditorApplication.isPlaying = false;
 
             AutoPopulateScene.SetupARFoundation();
+            SetupARFoundationDemoPlane();
+
             AutoPopulateScene.SetupARFoundationComponents();
             AutoPopulateScene.SetupARFoundationComponentsDemoCube();
 
-            SetupARFoundationComponentsDemoPlane();
             SetupARFoundationComponentsPlaneDetection();
 
         }
 
-        private static void SetupARFoundationComponentsDemoPlane()
+        private static void SetupARFoundationDemoPlane()
         {
 
-            var defaultPlanePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(defaultPlanePrefabPath);
+            var defaultPlanePrefab = CustomEditorExtensions.FindOrCreatePrefabFromAssetMenu(defaultPlaneName,
+                defaultPlaneMenuPath, defaultPlanePrefabPath);
 
-            if (defaultPlanePrefab)
-            {
-                return;
-            }
+            var sessionOrigin = GameObject.Find(sessionOriginName);
 
-            EditorApplication.ExecuteMenuItem("GameObject/XR/AR Default Plane");
+            var planeManager = sessionOrigin.AddOrGetComponent<ARPlaneManager>();
 
-            PrefabUtility.SaveAsPrefabAsset(GameObject.Find("AR Default Plane"), defaultPlanePrefabPath);
-
-            Object.DestroyImmediate(GameObject.Find("AR Default Plane"));
+            planeManager.planePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(defaultPlanePrefabPath);
 
         }
 
         private static void SetupARFoundationComponentsPlaneDetection()
         {
 
-            var sessionOrigin = GameObject.Find("AR Session Origin");
-
-            var planeManager = sessionOrigin.AddOrGetComponent<ARPlaneManager>();
-
-            planeManager.planePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(defaultPlanePrefabPath);
+            var sessionOrigin = GameObject.Find(sessionOriginName);
 
             sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
             var placeObjectOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
@@ -73,7 +72,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
         private static void AddPlaneEvent()
         {
 
-            var sessionOrigin = GameObject.Find("AR Session Origin");
+            var sessionOrigin = GameObject.Find(sessionOriginName);
             var planeEvents = sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
             var placeObjectsOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
 

@@ -12,19 +12,25 @@ namespace CandyCoded.ARFoundationComponents.Editor
     public static class AutoPopulateScene
     {
 
+        private const string sessionOriginName = "AR Session Origin";
+
+        private const string sessionOriginMenuPath = "GameObject/XR/AR Session Origin";
+
+        private const string sessionName = "AR Session";
+
+        private const string sessionMenuPath = "GameObject/XR/AR Session";
+
+        private const string directionalLightName = "Directional Light";
+
+        private const string directionalLightMenuPath = "GameObject/Light/Directional Light";
+
         internal const string cubePrefabPath = "Assets/Cube.prefab";
 
         internal static void SetupARFoundation()
         {
 
-            if (!GameObject.Find("AR Session Origin"))
-            {
-
-                EditorApplication.ExecuteMenuItem("GameObject/XR/AR Session Origin");
-
-            }
-
-            var sessionOrigin = GameObject.Find("AR Session Origin");
+            var sessionOrigin =
+                CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionOriginName, sessionOriginMenuPath);
 
             sessionOrigin.AddOrGetComponent<ARRaycastManager>();
 
@@ -37,12 +43,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             }
 
-            if (!GameObject.Find("AR Session"))
-            {
-
-                EditorApplication.ExecuteMenuItem("GameObject/XR/AR Session");
-
-            }
+            var light = CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionName, sessionMenuPath);
 
         }
 
@@ -53,21 +54,13 @@ namespace CandyCoded.ARFoundationComponents.Editor
             var cameraManager = camera.AddOrGetComponent<ARCameraManager>();
             cameraManager.lightEstimationMode = LightEstimationMode.AmbientIntensity;
 
-            var light = GameObject.Find("Directional Light");
+            var light = CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(directionalLightName,
+                directionalLightMenuPath);
 
-            if (!light)
-            {
+            var lightComponent = light.GetComponent<Light>();
 
-                EditorApplication.ExecuteMenuItem("GameObject/Light/Directional Light");
-
-                light = GameObject.Find("Directional Light");
-
-                var lightComponent = light.GetComponent<Light>();
-
-                lightComponent.color = new Color(1, 0.957f, 0.839f, 1);
-                lightComponent.shadows = LightShadows.Soft;
-
-            }
+            lightComponent.color = new Color(1, 0.957f, 0.839f, 1);
+            lightComponent.shadows = LightShadows.Soft;
 
             var lightEstimation = light.AddOrGetComponent<ARLightEstimation>();
             lightEstimation.cameraManager = cameraManager;

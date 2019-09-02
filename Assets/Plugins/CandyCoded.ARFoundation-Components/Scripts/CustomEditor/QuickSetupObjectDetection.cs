@@ -1,6 +1,7 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
 #if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -12,7 +13,11 @@ namespace CandyCoded.ARFoundationComponents.Editor
     public static class QuickSetupObjectDetection
     {
 
-        private const string objectReferenceLibraryPath = "Assets/ReferenceObjectLibrary.asset";
+        private const string sessionOriginName = "AR Session Origin";
+
+        private const string sessionOriginMenuPath = "GameObject/XR/AR Session Origin";
+
+        private const string objectReferenceLibraryAssetPath = "Assets/ReferenceObjectLibrary.asset";
 
         [MenuItem("Window/CandyCoded/ARFoundation Components/Quick Setup/Object Detection")]
         private static void Setup()
@@ -24,31 +29,47 @@ namespace CandyCoded.ARFoundationComponents.Editor
             AutoPopulateScene.SetupARFoundationComponents();
             AutoPopulateScene.SetupARFoundationComponentsDemoCube();
 
+            SetupARFoundationObjectDetection();
             SetupARFoundationComponentsObjectDetection();
+
+        }
+
+        private static void SetupARFoundationObjectDetection()
+        {
+
+            var sessionOrigin =
+                CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionOriginName, sessionOriginMenuPath);
+
+            var trackedObjectManager = sessionOrigin.AddOrGetComponent<ARTrackedObjectManager>();
+
+            trackedObjectManager.trackedObjectPrefab =
+                AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
+
+            var referenceLibrary =
+                CustomEditorExtensions.FindOrCreateScriptableObjectAtPath<XRReferenceObjectLibrary>(
+                    objectReferenceLibraryAssetPath);
+
+            try
+            {
+
+                trackedObjectManager.referenceLibrary = referenceLibrary;
+
+            }
+            catch (Exception err)
+            {
+
+                Debug.LogWarning(err);
+
+            }
 
         }
 
         private static void SetupARFoundationComponentsObjectDetection()
         {
 
-            var sessionOrigin = GameObject.Find("AR Session Origin");
-            var trackedObjectManager = sessionOrigin.AddOrGetComponent<ARTrackedObjectManager>();
+            var sessionOrigin = GameObject.Find(sessionOriginName);
 
-            trackedObjectManager.trackedObjectPrefab =
-                AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
-
-            var referenceLibrary = AssetDatabase.LoadAssetAtPath<XRReferenceObjectLibrary>(objectReferenceLibraryPath);
-
-            if (!referenceLibrary)
-            {
-
-                referenceLibrary = ScriptableObject.CreateInstance<XRReferenceObjectLibrary>();
-
-                AssetDatabase.CreateAsset(referenceLibrary, objectReferenceLibraryPath);
-
-            }
-
-            trackedObjectManager.referenceLibrary = referenceLibrary;
+            sessionOrigin.AddOrGetComponent<ARTrackedObjectEvents>();
 
         }
 
