@@ -30,7 +30,7 @@ namespace CandyCoded.ARFoundationComponents
 
         public GameObjectPlacedEvent GameObjectPlaced;
 
-        private bool objectToPlaceActiveState;
+        private bool _objectToPlaceActiveState;
 
         public Camera mainCamera { get; private set; }
 
@@ -83,7 +83,7 @@ namespace CandyCoded.ARFoundationComponents
                 return;
             }
 
-            objectToPlaceActiveState = objectToPlace.activeSelf;
+            _objectToPlaceActiveState = objectToPlace.activeSelf;
 
             objectToPlace.SetActive(false);
 
@@ -95,7 +95,7 @@ namespace CandyCoded.ARFoundationComponents
             if (objectToPlace && objectToPlace.scene.IsValid())
             {
 
-                objectToPlace.SetActive(objectToPlaceActiveState);
+                objectToPlace.SetActive(_objectToPlaceActiveState);
 
             }
 

@@ -25,12 +25,12 @@ namespace CandyCoded.ARFoundationComponents
 
         public TrackedImageEvent TrackedImageRemoved;
 
-        private ARTrackedImageManager trackedImageManager;
+        private ARTrackedImageManager _trackedImageManager;
 
         private void Awake()
         {
 
-            trackedImageManager = gameObject.GetComponent<ARTrackedImageManager>();
+            _trackedImageManager = gameObject.GetComponent<ARTrackedImageManager>();
 
         }
 
@@ -63,14 +63,14 @@ namespace CandyCoded.ARFoundationComponents
         private void OnEnable()
         {
 
-            trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+            _trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
 
         }
 
         private void OnDisable()
         {
 
-            trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+            _trackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
 
         }
 

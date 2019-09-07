@@ -26,12 +26,12 @@ namespace CandyCoded.ARFoundationComponents
 
         public TrackedObjectEvent TrackedObjectRemoved;
 
-        private ARTrackedObjectManager trackedObjectManager;
+        private ARTrackedObjectManager _trackedObjectManager;
 
         private void Awake()
         {
 
-            trackedObjectManager = gameObject.GetComponent<ARTrackedObjectManager>();
+            _trackedObjectManager = gameObject.GetComponent<ARTrackedObjectManager>();
 
         }
 
@@ -64,14 +64,14 @@ namespace CandyCoded.ARFoundationComponents
         private void OnEnable()
         {
 
-            trackedObjectManager.trackedObjectsChanged += OnTrackedObjectChanged;
+            _trackedObjectManager.trackedObjectsChanged += OnTrackedObjectChanged;
 
         }
 
         private void OnDisable()
         {
 
-            trackedObjectManager.trackedObjectsChanged -= OnTrackedObjectChanged;
+            _trackedObjectManager.trackedObjectsChanged -= OnTrackedObjectChanged;
 
         }
 

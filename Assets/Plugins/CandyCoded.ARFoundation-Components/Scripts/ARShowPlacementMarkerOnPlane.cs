@@ -35,9 +35,9 @@ namespace CandyCoded.ARFoundationComponents
         public float verticalOffset = 0.01f;
 #pragma warning restore CS0649
 
-        private bool placementMarkerActiveState;
+        private bool _placementMarkerActiveState;
 
-        private GameObject placementMarkerGameObject;
+        private GameObject _placementMarkerGameObject;
 
         public Camera mainCamera { get; private set; }
 
@@ -51,13 +51,13 @@ namespace CandyCoded.ARFoundationComponents
         public void ShowPlacementMarkerOnPlane(bool planeVisible, Pose pose, ARPlane plane)
         {
 
-            if (planeVisible && placementMarkerGameObject)
+            if (planeVisible && _placementMarkerGameObject)
             {
 
-                placementMarkerGameObject.SetActive(true);
+                _placementMarkerGameObject.SetActive(true);
 
-                placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
-                placementMarkerGameObject.transform.rotation = pose.rotation;
+                _placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
+                _placementMarkerGameObject.transform.rotation = pose.rotation;
 
                 if (plane.alignment.Equals(PlaneAlignment.None) ||
                     plane.alignment.Equals(PlaneAlignment.NotAxisAligned))
@@ -67,9 +67,9 @@ namespace CandyCoded.ARFoundationComponents
 
                 var cameraPosition = mainCamera.transform.position;
 
-                placementMarkerGameObject.transform.LookAt(new Vector3(
+                _placementMarkerGameObject.transform.LookAt(new Vector3(
                     cameraPosition.x,
-                    placementMarkerGameObject.transform.position.y,
+                    _placementMarkerGameObject.transform.position.y,
                     cameraPosition.z
                 ));
 
@@ -77,7 +77,7 @@ namespace CandyCoded.ARFoundationComponents
             else
             {
 
-                placementMarkerGameObject.SetActive(false);
+                _placementMarkerGameObject.SetActive(false);
 
             }
 
@@ -94,14 +94,14 @@ namespace CandyCoded.ARFoundationComponents
             if (_placementMarker.scene.IsValid())
             {
 
-                placementMarkerActiveState = _placementMarker.activeSelf;
+                _placementMarkerActiveState = _placementMarker.activeSelf;
 
                 _placementMarker.SetActive(false);
 
             }
 
-            placementMarkerGameObject = Instantiate(_placementMarker);
-            placementMarkerGameObject.SetActive(false);
+            _placementMarkerGameObject = Instantiate(_placementMarker);
+            _placementMarkerGameObject.SetActive(false);
 
         }
 
@@ -111,14 +111,14 @@ namespace CandyCoded.ARFoundationComponents
             if (_placementMarker && _placementMarker.scene.IsValid())
             {
 
-                _placementMarker.SetActive(placementMarkerActiveState);
+                _placementMarker.SetActive(_placementMarkerActiveState);
 
             }
 
-            if (placementMarkerGameObject)
+            if (_placementMarkerGameObject)
             {
 
-                Destroy(placementMarkerGameObject);
+                Destroy(_placementMarkerGameObject);
 
             }
 
