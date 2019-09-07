@@ -27,15 +27,15 @@ namespace CandyCoded.ARFoundationComponents
 
         public PlaneEvent PlaneTouchedWithLookingAtPosition;
 
-        private ARRaycastManager raycastManager;
+        private ARRaycastManager _raycastManager;
 
-        private ARPlaneManager planeManager;
+        private ARPlaneManager _planeManager;
 
         private void Awake()
         {
 
-            raycastManager = gameObject.GetComponent<ARRaycastManager>();
-            planeManager = gameObject.GetComponent<ARPlaneManager>();
+            _raycastManager = gameObject.GetComponent<ARRaycastManager>();
+            _planeManager = gameObject.GetComponent<ARPlaneManager>();
 
         }
 
@@ -55,12 +55,12 @@ namespace CandyCoded.ARFoundationComponents
         private void Update()
         {
 
-            if (!planeManager.enabled)
+            if (!_planeManager.enabled)
             {
                 return;
             }
 
-            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(raycastManager, planeManager,
+            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(_raycastManager, _planeManager,
                 out var lookingAtPose, out var lookingAtPlane);
 
             if (!planeVisible)
@@ -76,7 +76,7 @@ namespace CandyCoded.ARFoundationComponents
                 return;
             }
 
-            if (ARFoundationExtensions.HasTouchedPlane(raycastManager, planeManager, out var touchPose,
+            if (ARFoundationExtensions.HasTouchedPlane(_raycastManager, _planeManager, out var touchPose,
                 out var touchPlane))
             {
                 PlaneTouchedWithTouchPosition?.Invoke(touchPose, touchPlane);
