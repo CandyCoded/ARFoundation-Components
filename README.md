@@ -2,27 +2,24 @@
 
 > 📱 Generic components for use with Unity's AR Foundation package
 
-## Features
+## Contents
 
-### Components
-
--   Helper Components
-    -   [ARLightEstimation](Documentation/ARLightEstimation.md)
-    -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
-    -   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
--   Event Components
-    -   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
-    -   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
-    -   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
-
-### Extensions
-
--   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
-    -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
-    -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
-    -   [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
-    -   [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
-    -   [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
+-   Components
+    -   Helper Components
+        -   [ARLightEstimation](Documentation/ARLightEstimation.md)
+        -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
+        -   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
+    -   Event Components
+        -   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
+        -   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
+        -   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
+-   Extensions
+    -   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
+        -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
+        -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
+        -   [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
+        -   [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
+        -   [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
 
 ## Installation
 
