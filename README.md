@@ -6,10 +6,15 @@
 
 ### Components
 
+#### Helper Components
+
 -   [ARLightEstimation](Documentation/ARLightEstimation.md)
 -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
--   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
 -   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
+
+#### Event Components
+
+-   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
 -   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
 -   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
 
