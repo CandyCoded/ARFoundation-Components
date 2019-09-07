@@ -4,18 +4,23 @@
 
 ## Features
 
--   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
-    -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
-    -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
-    -   [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
-    -   [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
-    -   [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
+### Components
+
 -   [ARLightEstimation](Documentation/ARLightEstimation.md)
 -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
 -   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
 -   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
 -   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
 -   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
+
+### Extensions
+
+-   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
+    -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
+    -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
+    -   [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
+    -   [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
+    -   [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
 
 ## Installation
 
@@ -38,7 +43,7 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 ### Install Dependencies
 
 1. Install the latest **ARKit XR Plugin**, **ARCore XR Plugin** and **AR Foundation** (preview) packages from the Package Manager.
-1. Install both the **ARFoundation Components** and **CandyCoded** package (see above).
+2. Install both the **ARFoundation Components** and **CandyCoded** package (see above).
 
 ### Setup AR Foundation
 
