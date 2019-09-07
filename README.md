@@ -66,11 +66,22 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 
 1. Check that the scene is in the **Build Settings** window.
 1. Change the build platform in the **Build Settings** window to **iOS**.
-1. In the **Player Settings** panel, make sure there is a string in the **Camera Usage Description** field, the **Target minimum iOS Version** is at least `11`, and **Architecture** is set to `ARM64`.
+1. In the **Player Settings** panel, make sure following settings are correct:
+
+| Setting | Value | Description |
+| ------- | ----- | ----------- |
+| **Camera Usage Description** | `AR BABY` or any other string | This value will display when the dialog asking for camera permission displays on device. |
+| **Target minimum iOS Version** | `11` or higher | iOS 11 was the first version ARKit was available. |
+| **Architecture** | `ARM64` | The only iOS devices that support ARKit are built on `ARM64` architecture. |
 
 ### Setup Android build
 
 1. Check that the scene is in the **Build Settings** window.
 1. Change the build platform in the **Build Settings** window to **Android**.
-1. In the **Player Settings** panel, make sure that **Vulcan** is not in the list of **Graphic APIs**, **Multithreaded Rendering** is unchecked, the **Bundle Identifier** is set, and **Minimum API level** is set to `Android 7.0 'Nugget' (API level 24)`.
-1. If the **Android SDK is outdated** dialog appears, press **Use Highest Installed**.
+1. In the **Player Settings** panel, make sure following settings are correct:
+
+| Setting | Value | Description |
+| ------- | ----- | ----------- |
+| **Graphic APIs** | `OPENGLs3` and remove `Vulcan` | ARCore does not support Vulcan [arcore-android-sdk issue #258](https://github.com/google-ar/arcore-android-sdk/issues/258) |
+| **Multithreaded Rendering** | `false` (unchecked) | ARCore does not support multithreaded rendering [arcore-android-sdk issue #141](https://github.com/google-ar/arcore-unity-sdk/issues/141) |
+| **Minimum API level** | `Android 7.0 'Nugget' (API level 24)` or higher | Android 7 was the first version ARCore was available. |
