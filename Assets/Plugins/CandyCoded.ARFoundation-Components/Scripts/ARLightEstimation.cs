@@ -14,15 +14,13 @@ namespace CandyCoded.ARFoundationComponents
         [SerializeField]
         private ARCameraManager _cameraManager;
 
-#pragma warning disable CS0109
         public new Light light { get; private set; }
 
-        public new ARCameraManager cameraManager
+        public ARCameraManager cameraManager
         {
             get => _cameraManager;
             set => _cameraManager = value;
         }
-#pragma warning restore CS0109
 
         private void Awake()
         {
