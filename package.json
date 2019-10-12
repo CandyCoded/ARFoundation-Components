@@ -12,15 +12,13 @@
     "arkit"
   ],
   "dependencies": {
-    "com.unity.xr.arfoundation": "3.0.0-preview.1",
-    "com.unity.xr.legacyinputhelpers": "2.0.6",
-    "com.unity.ugui": "1.0.0",
     "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.0.2",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.particlesystem": "1.0.0",
     "com.unity.modules.ui": "1.0.0",
-    "com.unity.modules.vr": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.xr.arfoundation": "3.0.0-preview.3"
   }
 }
