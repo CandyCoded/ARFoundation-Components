@@ -1,16 +1,11 @@
 {
-  "name": "com.candycoded.arfoundation-components",
+  "name": "xyz.candycoded.arfoundation-components",
   "displayName": "ARFoundation-Components",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "unity": "2019.2",
+  "unityRelease": "4f1",
   "description": "Generic components for use with ARFoundation",
-  "keywords": [
-    "components",
-    "extensions",
-    "ar",
-    "arcore",
-    "arkit"
-  ],
+  "license": "MIT",
   "dependencies": {
     "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.0.2",
     "com.unity.modules.animation": "1.0.0",
@@ -20,5 +15,22 @@
     "com.unity.modules.xr": "1.0.0",
     "com.unity.ugui": "1.0.0",
     "com.unity.xr.arfoundation": "3.0.0-preview.3"
+  },
+  "keywords": [
+    "components",
+    "extensions",
+    "ar",
+    "arcore",
+    "arkit"
+  ],
+  "author": {
+    "name": "Scott Doxey",
+    "email": "hello@scottdoxey.com",
+    "homepage": "http://scottdoxey.com/"
+  },
+  "homepage": "https://github.com/CandyCoded/ARFoundation-Components",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CandyCoded/ARFoundation-Components.git"
   }
 }
