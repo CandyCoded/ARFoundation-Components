@@ -6,10 +6,10 @@ A component used to track image targets in AR. Image targets are managed through
 
 #### Events
 
-| Name | Attributes | Description |
-| ---- | ---------- | ----------- |
-| `TrackedImageAdded` | `ARTrackedImage` | Fires whenever an `ARTrackedImage` is first tracked. |
-| `TrackedImageUpdated` | `ARTrackedImage` | Fires whenever an `ARTrackedImage` is tracked and updated. |
+| Name                  | Attributes       | Description                                                    |
+| --------------------- | ---------------- | -------------------------------------------------------------- |
+| `TrackedImageAdded`   | `ARTrackedImage` | Fires whenever an `ARTrackedImage` is first tracked.           |
+| `TrackedImageUpdated` | `ARTrackedImage` | Fires whenever an `ARTrackedImage` is tracked and updated.     |
 | `TrackedImageRemoved` | `ARTrackedImage` | Fires whenever an `ARTrackedImage` is no longer being tracked. |
 
 <img src="../Screenshots/ARTrackedImageEvents.png" width="400">

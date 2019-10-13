@@ -4,22 +4,22 @@
 
 ## Contents
 
--   Components
-    -   Helper Components
-        -   [ARLightEstimation](Documentation/ARLightEstimation.md)
-        -   [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
-        -   [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
-    -   Event Components
-        -   [ARPlaneEvents](Documentation/ARPlaneEvents.md)
-        -   [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
-        -   [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
--   Extensions
-    -   [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
-        -   [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
-        -   [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
-        -   [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
-        -   [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
-        -   [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
+- Components
+  - Helper Components
+    - [ARLightEstimation](Documentation/ARLightEstimation.md)
+    - [ARPlaceObjectOnPlane](Documentation/ARPlaceObjectOnPlane.md)
+    - [ARShowPlacementMarkerOnPlane](Documentation/ARShowPlacementMarkerOnPlane.md)
+  - Event Components
+    - [ARPlaneEvents](Documentation/ARPlaneEvents.md)
+    - [ARTrackedImageEvents](Documentation/ARTrackedImageEvents.md)
+    - [ARTrackedObjectEvents](Documentation/ARTrackedObjectEvents.md)
+- Extensions
+  - [ARFoundationExtensions](Documentation/ARFoundationExtensions.md)
+    - [CenterOfScreen](Documentation/ARFoundationExtensions.md#centerofscreen)
+    - [RaycastToPlane](Documentation/ARFoundationExtensions.md#raycasttoplane)
+    - [IsLookingAtPlane](Documentation/ARFoundationExtensions.md#islookingatplane)
+    - [HasTouchedPlane](Documentation/ARFoundationExtensions.md#hastouchedplane)
+    - [SetActiveStateOfPlaneVisuals](Documentation/ARFoundationExtensions.md#setactivestateofplanevisuals)
 
 ## Installation
 
@@ -27,11 +27,11 @@
 
 ```json
 {
-    "dependencies": {
-        "xyz.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v3.0.0",
-        "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.0.2",
-        "com.unity.xr.arfoundation": "3.0.0-preview.1"
-    }
+  "dependencies": {
+    "xyz.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v3.0.0",
+    "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.0.2",
+    "com.unity.xr.arfoundation": "3.0.0-preview.1"
+  }
 }
 ```
 
@@ -84,7 +84,7 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 1. Change the build platform in the **Build Settings** window to **Android**.
 1. In the **Player Settings** panel, make sure following settings are correct:
 
-| Setting                     | Value                                           | Description                                                                                                                               |
-| --------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Graphic APIs**            | `OPENGLs3` and remove `Vulcan`                  | ARCore does not support Vulcan [arcore-android-sdk issue #258](https://github.com/google-ar/arcore-android-sdk/issues/258)                |
-| **Minimum API level**       | `Android 7.0 'Nugget' (API level 24)` or higher | Android 7 was the first version ARCore was available.                                                                                     |
+| Setting               | Value                                           | Description                                                                                                                |
+| --------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Graphic APIs**      | `OPENGLs3` and remove `Vulcan`                  | ARCore does not support Vulcan [arcore-android-sdk issue #258](https://github.com/google-ar/arcore-android-sdk/issues/258) |
+| **Minimum API level** | `Android 7.0 'Nugget' (API level 24)` or higher | Android 7 was the first version ARCore was available.                                                                      |
