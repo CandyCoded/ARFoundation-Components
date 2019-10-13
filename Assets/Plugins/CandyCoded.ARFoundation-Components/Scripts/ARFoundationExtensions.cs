@@ -13,6 +13,15 @@ namespace CandyCoded.ARFoundationComponents
 
         public static Vector2 CenterOfScreen => new Vector2(Screen.width, Screen.height) / 2;
 
+        /// <summary>
+        /// Raycast from `Vector2` screen point. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="position">Position on screen to fire raycast from.</param>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
+        /// <param name="pose">Unity pose object.</param>
+        /// <param name="plane">AR Foundation plane object.</param>
+        /// <returns>void</returns>
         public static bool RaycastToPlane(Vector2 position, ARRaycastManager raycastManager,
             ARPlaneManager planeManager, out Pose pose, out ARPlane plane)
         {
@@ -48,6 +57,13 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Raycast from center of screen. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
+        /// <param name="pose">Unity pose object.</param>
+        /// <param name="plane">AR Foundation plane object.</param>
         public static bool IsLookingAtPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager, out Pose pose,
             out ARPlane plane)
         {
@@ -56,6 +72,12 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Raycast from center of screen. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
+        /// <param name="pose">Unity pose object.</param>
         public static bool IsLookingAtPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager, out Pose pose)
         {
 
@@ -63,6 +85,11 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Raycast from center of screen. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
         public static bool IsLookingAtPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager)
         {
 
@@ -70,6 +97,13 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Raycast from input position of screen. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
+        /// <param name="pose">Unity pose object.</param>
+        /// <param name="plane">AR Foundation plane object.</param>
         public static bool HasTouchedPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager, out Pose pose,
             out ARPlane plane)
         {
@@ -90,6 +124,12 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Raycast from input position of screen. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
+        /// <param name="pose">Unity pose object.</param>
         public static bool HasTouchedPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager, out Pose pose)
         {
 
@@ -97,6 +137,11 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Raycast from input position of screen. Returns true if raycast collides with a plane.
+        /// </summary>
+        /// <param name="raycastManager">AR Foundation raycast manager component.</param>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
         public static bool HasTouchedPlane(ARRaycastManager raycastManager, ARPlaneManager planeManager)
         {
 
@@ -104,6 +149,11 @@ namespace CandyCoded.ARFoundationComponents
 
         }
 
+        /// <summary>
+        /// Disables/enables all `ARPlane` gameObjects.
+        /// </summary>
+        /// <param name="planeManager">AR Foundation plane manager component.</param>
+        /// <param name="activeState">False deactivates any tracked planes. True reactivates any deactivated planes.</param>
         public static void SetActiveStateOfPlaneVisuals(this ARPlaneManager planeManager, bool activeState)
         {
 
