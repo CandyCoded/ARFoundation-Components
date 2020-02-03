@@ -12,8 +12,8 @@
   },
   "lock": {
     "xyz.candycoded.candycoded": {
-      "hash": "540fe42735ca9786ff3315b08a31253640b733d5",
-      "revision": "v3.0.2"
+      "revision": "v3.0.2",
+      "hash": "540fe42735ca9786ff3315b08a31253640b733d5"
     }
   }
 }
