@@ -43,7 +43,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             }
 
-            var light = CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionName, sessionMenuPath);
+            var session = CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionName, sessionMenuPath);
 
         }
 
