@@ -125,7 +125,7 @@ namespace CandyCoded.ARFoundationComponents
         private void SetupPlacementMarker()
         {
 
-            if (!_placementMarker)
+            if (!_placementMarker || !Application.isPlaying)
             {
                 return;
             }
@@ -146,6 +146,11 @@ namespace CandyCoded.ARFoundationComponents
 
         private void CleanupPlacementMarker()
         {
+
+            if (!Application.isPlaying)
+            {
+                return;
+            }
 
             if (_placementMarker && _placementMarker.scene.IsValid())
             {
