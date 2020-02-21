@@ -53,7 +53,7 @@ namespace CandyCoded.ARFoundationComponents
 
             }
 
-            return true;
+            return !pose.Equals(Pose.identity) && plane != null;
 
         }
 
