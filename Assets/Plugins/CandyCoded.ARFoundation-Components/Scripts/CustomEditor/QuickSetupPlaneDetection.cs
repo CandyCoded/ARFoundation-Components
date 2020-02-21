@@ -67,6 +67,11 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             EditorApplication.update += AddPlaneEvent;
 
+            var showPlacementMarkerOnPlane = sessionOrigin.AddComponent<ARShowPlacementMarkerOnPlane>();
+
+            showPlacementMarkerOnPlane.placementMarker =
+                AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
+
         }
 
         private static void AddPlaneEvent()
@@ -76,12 +81,12 @@ namespace CandyCoded.ARFoundationComponents.Editor
             var planeEvents = sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
             var placeObjectsOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
 
-            if (planeEvents.PlaneTouchedWithTouchPosition == null)
+            if (planeEvents.PlaneTouchedWithLookingAtPosition == null)
             {
                 return;
             }
 
-            UnityEventTools.AddPersistentListener(planeEvents.PlaneTouchedWithTouchPosition,
+            UnityEventTools.AddPersistentListener(planeEvents.PlaneTouchedWithLookingAtPosition,
                 placeObjectsOnPlane.PlaceObjectOnPlane);
 
             EditorApplication.update -= AddPlaneEvent;

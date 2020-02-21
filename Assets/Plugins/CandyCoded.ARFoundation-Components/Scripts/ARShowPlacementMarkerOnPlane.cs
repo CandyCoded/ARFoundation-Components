@@ -8,6 +8,8 @@ namespace CandyCoded.ARFoundationComponents
 {
 
     [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(ARRaycastManager))]
+    [RequireComponent(typeof(ARPlaneManager))]
     [HelpURL(
         "https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARShowPlacementMarkerOnPlane.md")]
     public class ARShowPlacementMarkerOnPlane : MonoBehaviour
@@ -39,12 +41,47 @@ namespace CandyCoded.ARFoundationComponents
 
         private GameObject _placementMarkerGameObject;
 
-        public Camera mainCamera { get; private set; }
+        private ARRaycastManager _raycastManager;
+
+        private ARPlaneManager _planeManager;
+
+        private Camera _mainCamera;
 
         private void Awake()
         {
 
-            mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+            _raycastManager = gameObject.GetComponent<ARRaycastManager>();
+            _planeManager = gameObject.GetComponent<ARPlaneManager>();
+
+            _mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+
+        }
+
+        private void Start()
+        {
+
+            if (ARSession.state == ARSessionState.None ||
+                ARSession.state == ARSessionState.Unsupported)
+            {
+
+                enabled = false;
+
+            }
+
+        }
+
+        private void Update()
+        {
+
+            if (!_planeManager.enabled)
+            {
+                return;
+            }
+
+            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(_raycastManager, _planeManager,
+                out var lookingAtPose, out var lookingAtPlane);
+
+            ShowPlacementMarkerOnPlane(planeVisible, lookingAtPose, lookingAtPlane);
 
         }
 
@@ -67,7 +104,7 @@ namespace CandyCoded.ARFoundationComponents
                     return;
                 }
 
-                var cameraPosition = mainCamera.transform.position;
+                var cameraPosition = _mainCamera.transform.position;
 
                 _placementMarkerGameObject.transform.LookAt(new Vector3(
                     cameraPosition.x,
@@ -88,7 +125,7 @@ namespace CandyCoded.ARFoundationComponents
         private void SetupPlacementMarker()
         {
 
-            if (!_placementMarker)
+            if (!_placementMarker || !Application.isPlaying)
             {
                 return;
             }
@@ -109,6 +146,11 @@ namespace CandyCoded.ARFoundationComponents
 
         private void CleanupPlacementMarker()
         {
+
+            if (!Application.isPlaying)
+            {
+                return;
+            }
 
             if (_placementMarker && _placementMarker.scene.IsValid())
             {
