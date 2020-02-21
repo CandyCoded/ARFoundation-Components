@@ -30,9 +30,9 @@ namespace CandyCoded.ARFoundationComponents
 
         public GameObjectPlacedEvent GameObjectPlaced;
 
-        private bool _objectToPlaceActiveState;
-
         public Camera mainCamera { get; private set; }
+
+        private bool _objectToPlaceActiveState;
 
         private void Awake()
         {
