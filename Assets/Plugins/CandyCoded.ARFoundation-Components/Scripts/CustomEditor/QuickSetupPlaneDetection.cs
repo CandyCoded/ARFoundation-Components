@@ -67,6 +67,11 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             EditorApplication.update += AddPlaneEvent;
 
+            var showPlacementMarkerOnPlane = sessionOrigin.AddComponent<ARShowPlacementMarkerOnPlane>();
+
+            showPlacementMarkerOnPlane.placementMarker =
+                AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
+
         }
 
         private static void AddPlaneEvent()
