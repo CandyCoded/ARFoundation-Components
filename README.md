@@ -23,6 +23,8 @@
 
 ## Installation
 
+<https://docs.unity3d.com/Packages/com.unity.package-manager-ui@2.0/manual/index.html>
+
 ### Unity Package Manager
 
 ```json
@@ -31,6 +33,25 @@
     "xyz.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v3.2.0",
     "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.0.2"
   }
+}
+```
+
+#### Scoped UPM Registry
+
+```json
+{
+  "dependencies": {
+    "xyz.candycoded.arfoundation-components": "3.2.0",
+    "xyz.candycoded.candycoded": "3.0.2",
+    ...
+  },
+  "scopedRegistries": [
+    {
+      "name": "candycoded",
+      "url": "https://registry.npmjs.com",
+      "scopes": ["xyz.candycoded"]
+    }
+  ]
 }
 ```
 
