@@ -55,7 +55,9 @@ namespace CandyCoded.ARFoundationComponents
 
             objectToPlaceGameObject.SetActive(true);
 
-            objectToPlaceGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
+            objectToPlaceGameObject.transform.position =
+                pose.position + pose.up.normalized * verticalOffset;
+
             objectToPlaceGameObject.transform.rotation = pose.rotation;
 
             if (plane.alignment.Equals(PlaneAlignment.None) || plane.alignment.Equals(PlaneAlignment.NotAxisAligned))
