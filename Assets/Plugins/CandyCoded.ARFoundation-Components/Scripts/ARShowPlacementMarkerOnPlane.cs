@@ -56,7 +56,9 @@ namespace CandyCoded.ARFoundationComponents
 
                 _placementMarkerGameObject.SetActive(true);
 
-                _placementMarkerGameObject.transform.position = pose.position + new Vector3(0, verticalOffset, 0);
+                _placementMarkerGameObject.transform.position =
+                    pose.position + pose.up.normalized * verticalOffset;
+
                 _placementMarkerGameObject.transform.rotation = pose.rotation;
 
                 if (plane.alignment.Equals(PlaneAlignment.None) ||
