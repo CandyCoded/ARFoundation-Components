@@ -60,10 +60,8 @@ namespace CandyCoded.ARFoundationComponents
                 return;
             }
 
-            var planeVisible = ARFoundationExtensions.IsLookingAtPlane(_raycastManager, _planeManager,
-                out var lookingAtPose, out var lookingAtPlane);
-
-            if (!planeVisible)
+            if (!ARFoundationExtensions.IsLookingAtPlane(_raycastManager, _planeManager,
+                out var lookingAtPose, out var lookingAtPlane))
             {
                 return;
             }
