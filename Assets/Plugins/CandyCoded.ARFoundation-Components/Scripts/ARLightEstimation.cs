@@ -11,10 +11,10 @@ namespace CandyCoded.ARFoundationComponents
     public class ARLightEstimation : MonoBehaviour
     {
 
+        public new Light light { get; private set; }
+
         [SerializeField]
         private ARCameraManager _cameraManager;
-
-        public new Light light { get; private set; }
 
         public ARCameraManager cameraManager
         {
