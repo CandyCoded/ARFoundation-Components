@@ -2,6 +2,8 @@
 
 > 📱 Generic components for use with Unity's AR Foundation package
 
+[![NPM Version](http://img.shields.io/npm/v/xyz.candycoded.arfoundation-components.svg?style=flat)](https://www.npmjs.org/package/xyz.candycoded.arfoundation-components)
+
 ## Contents
 
 - Components
