@@ -51,6 +51,8 @@ namespace CandyCoded.ARFoundationComponents.Editor
         {
 
             var camera = GameObject.Find("AR Camera");
+            camera.tag = "MainCamera";
+
             var cameraManager = camera.AddOrGetComponent<ARCameraManager>();
             cameraManager.lightEstimationMode = LightEstimationMode.AmbientIntensity;
 
