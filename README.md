@@ -44,7 +44,7 @@
 ```json
 {
   "dependencies": {
-    "xyz.candycoded.arfoundation-components": "3.2.0",
+    "xyz.candycoded.arfoundation-components": "3.2.1",
     "xyz.candycoded.candycoded": "3.0.2",
     ...
   },
