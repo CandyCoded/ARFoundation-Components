@@ -33,7 +33,7 @@
 {
   "dependencies": {
     "xyz.candycoded.arfoundation-components": "https://github.com/CandyCoded/ARFoundation-Components.git#v3.2.1",
-    "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.0.2",
+    "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v3.1.0",
     ...
   }
 }
@@ -45,7 +45,7 @@
 {
   "dependencies": {
     "xyz.candycoded.arfoundation-components": "3.2.1",
-    "xyz.candycoded.candycoded": "3.0.2",
+    "xyz.candycoded.candycoded": "3.1.0",
     ...
   },
   "scopedRegistries": [
