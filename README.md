@@ -44,8 +44,8 @@
 ```json
 {
   "dependencies": {
-    "xyz.candycoded.arfoundation-components": "3.2.1",
-    "xyz.candycoded.candycoded": "3.1.0",
+    "xyz.candycoded.arfoundation-components": "4.0.0",
+    "xyz.candycoded.candycoded": "4.0.0",
     ...
   },
   "scopedRegistries": [
