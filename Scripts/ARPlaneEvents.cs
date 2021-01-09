@@ -31,6 +31,8 @@ namespace CandyCoded.ARFoundationComponents
 
         private ARPlaneManager _planeManager;
 
+        private int? _currentFingerId;
+
         private void Awake()
         {
 
@@ -68,8 +70,9 @@ namespace CandyCoded.ARFoundationComponents
 
             PlaneUpdated?.Invoke(lookingAtPose, lookingAtPlane);
 
-            if (!InputManager.GetInputDown(out var currentFingerId) || EventSystem.current &&
-                EventSystem.current.IsPointerOverGameObject(currentFingerId))
+            if (!InputManager.GetInputDown(ref _currentFingerId) || EventSystem.current &&
+                _currentFingerId.HasValue && EventSystem.current.IsPointerOverGameObject(_currentFingerId.Value))
+
             {
                 return;
             }
