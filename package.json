@@ -2,8 +2,8 @@
   "name": "xyz.candycoded.arfoundation-components",
   "displayName": "ARFoundation-Components",
   "version": "3.2.1",
-  "unity": "2019.3",
-  "unityRelease": "2f1",
+  "unity": "2019.4",
+  "unityRelease": "0f1",
   "description": "Generic components for use with ARFoundation",
   "license": "MIT",
   "dependencies": {
