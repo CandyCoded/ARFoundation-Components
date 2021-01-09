@@ -93,6 +93,7 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 
 1. Check that the scene is in the **Build Settings** window.
 1. Change the build platform in the **Build Settings** window to **iOS**.
+1. In the **XR Plug-in Managment** panel, make sure to enable the ARKit plug-in providers.
 1. In the **Player Settings** panel, make sure following settings are correct:
 
 | Setting                        | Value                         | Description                                                                              |
@@ -103,8 +104,11 @@ See <https://github.com/CandyCoded/ARFoundation-Components-Demo> for a working e
 
 ### Setup Android build
 
+First follow: <https://developers.google.com/ar/develop/unity/android-11-build>
+
 1. Check that the scene is in the **Build Settings** window.
 1. Change the build platform in the **Build Settings** window to **Android**.
+1. In the **XR Plug-in Managment** panel, make sure to enable the ARCore plug-in providers.
 1. In the **Player Settings** panel, make sure following settings are correct:
 
 | Setting               | Value                                           | Description                                                                                                                |
