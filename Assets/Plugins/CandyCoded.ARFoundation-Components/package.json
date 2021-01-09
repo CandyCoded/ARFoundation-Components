@@ -14,7 +14,7 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
     "com.unity.ugui": "1.0.0",
-    "com.unity.xr.arfoundation": "4.0.2"
+    "com.unity.xr.arfoundation": "4.1.1"
   },
   "keywords": [
     "components",

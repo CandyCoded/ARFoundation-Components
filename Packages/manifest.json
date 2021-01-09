@@ -2,7 +2,7 @@
   "dependencies": {
     "com.unity.ide.rider": "3.0.1",
     "com.unity.ugui": "1.0.0",
-    "com.unity.xr.arfoundation": "4.0.2",
+    "com.unity.xr.arfoundation": "4.1.1",
     "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v4.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
@@ -10,11 +10,5 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "xyz.candycoded.candycoded": {
-      "revision": "v4.0.0",
-      "hash": "191c9dc4b49403fea238f4dc0fa451a4cd5b12ae"
-    }
   }
 }
