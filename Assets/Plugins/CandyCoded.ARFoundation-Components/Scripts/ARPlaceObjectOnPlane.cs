@@ -1,6 +1,7 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -30,6 +31,8 @@ namespace CandyCoded.ARFoundationComponents
 
         public GameObjectPlacedEvent GameObjectPlaced;
 
+        public List<GameObject> objectsPlaced = new List<GameObject>();
+
         public Camera mainCamera { get; private set; }
 
         private bool _objectToPlaceActiveState;
@@ -46,7 +49,12 @@ namespace CandyCoded.ARFoundationComponents
 
             var objectToPlaceGameObject = objectToPlace;
 
-            if (placeMultiple)
+            if (!placeMultiple && objectsPlaced.Count != 0)
+            {
+                return;
+            }
+
+            if (!objectToPlaceGameObject.scene.IsValid())
             {
 
                 objectToPlaceGameObject = Instantiate(objectToPlace);
@@ -72,6 +80,8 @@ namespace CandyCoded.ARFoundationComponents
                 objectToPlaceGameObject.transform.position.y,
                 cameraPosition.z
             ));
+
+            objectsPlaced.Add(objectToPlaceGameObject);
 
             GameObjectPlaced?.Invoke(objectToPlaceGameObject);
 
