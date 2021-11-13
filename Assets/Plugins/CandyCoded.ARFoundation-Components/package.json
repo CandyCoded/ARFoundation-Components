@@ -7,14 +7,14 @@
   "description": "Generic components for use with ARFoundation",
   "license": "MIT",
   "dependencies": {
-    "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v4.3.2",
+    "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v4.4.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.particlesystem": "1.0.0",
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
     "com.unity.ugui": "1.0.0",
-    "com.unity.xr.arfoundation": "4.1.5"
+    "com.unity.xr.arfoundation": "4.1.7"
   },
   "keywords": [
     "components",

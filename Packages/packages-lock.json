@@ -8,17 +8,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.5",
+      "version": "3.0.7",
       "depth": 0,
       "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.inputsystem": {
-      "version": "1.0.2",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.subsystemregistration": {
@@ -31,7 +26,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.24",
+      "version": "1.1.30",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -51,17 +46,17 @@
       }
     },
     "com.unity.xr.arfoundation": {
-      "version": "4.1.5",
+      "version": "4.1.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.arsubsystems": "4.1.5",
+        "com.unity.xr.arsubsystems": "4.1.7",
         "com.unity.xr.management": "4.0.1"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arsubsystems": {
-      "version": "4.1.5",
+      "version": "4.1.7",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -70,7 +65,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.legacyinputhelpers": {
-      "version": "2.1.7",
+      "version": "2.1.8",
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -93,11 +88,10 @@
       "url": "https://packages.unity.com"
     },
     "xyz.candycoded.candycoded": {
-      "version": "https://github.com/CandyCoded/CandyCoded.git#v4.3.2",
+      "version": "https://github.com/CandyCoded/CandyCoded.git#v4.4.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.inputsystem": "1.0.2",
         "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.physics2d": "1.0.0",
@@ -105,7 +99,7 @@
         "com.unity.modules.uielements": "1.0.0",
         "com.unity.ugui": "1.0.0"
       },
-      "hash": "5ba919edde84683f190a76cf44897d393caa9821"
+      "hash": "3a1093af773d016b1b4dd5b94315e04641177ff1"
     },
     "com.unity.modules.animation": {
       "version": "1.0.0",
@@ -182,6 +176,18 @@
       "depth": 1,
       "source": "builtin",
       "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.uielementsnative": "1.0.0"
+      }
+    },
+    "com.unity.modules.uielementsnative": {
+      "version": "1.0.0",
+      "depth": 2,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       }
