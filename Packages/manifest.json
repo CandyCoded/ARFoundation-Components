@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "com.unity.ide.rider": "3.0.12",
-    "com.unity.test-framework": "1.1.31",
+    "com.unity.ide.rider": "3.0.18",
+    "com.unity.test-framework": "1.1.33",
     "com.unity.ugui": "1.0.0",
-    "com.unity.xr.arfoundation": "4.1.9",
+    "com.unity.xr.arfoundation": "4.2.7",
     "xyz.candycoded.candycoded": "https://github.com/CandyCoded/CandyCoded.git#v4.4.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
