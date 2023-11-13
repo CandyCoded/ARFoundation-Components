@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -16,7 +17,7 @@ namespace CandyCoded.ARFoundationComponents
 
     }
 
-    [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(XROrigin))]
     [HelpURL("https://github.com/CandyCoded/ARFoundation-Components/blob/master/Documentation/ARPlaceObjectOnPlane.md")]
     public class ARPlaceObjectOnPlane : MonoBehaviour
     {
@@ -40,7 +41,7 @@ namespace CandyCoded.ARFoundationComponents
         private void Awake()
         {
 
-            mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+            mainCamera = gameObject.GetComponent<XROrigin>().GetComponentInChildren<Camera>();
 
         }
 

@@ -13,9 +13,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
     public static class QuickSetupObjectDetection
     {
 
-        private const string sessionOriginName = "AR Session Origin";
-
-        private const string sessionOriginMenuPath = "GameObject/XR/AR Session Origin";
+        private const string xrOriginName = "XR Origin";
 
         private const string objectReferenceLibraryAssetPath = "Assets/ReferenceObjectLibrary.asset";
 
@@ -37,10 +35,9 @@ namespace CandyCoded.ARFoundationComponents.Editor
         private static void SetupARFoundationObjectDetection()
         {
 
-            var sessionOrigin =
-                CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionOriginName, sessionOriginMenuPath);
+            var xrOrigin = GameObject.Find(xrOriginName);
 
-            var trackedObjectManager = sessionOrigin.AddOrGetComponent<ARTrackedObjectManager>();
+            var trackedObjectManager = xrOrigin.AddOrGetComponent<ARTrackedObjectManager>();
 
             trackedObjectManager.trackedObjectPrefab =
                 AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
@@ -67,9 +64,9 @@ namespace CandyCoded.ARFoundationComponents.Editor
         private static void SetupARFoundationComponentsObjectDetection()
         {
 
-            var sessionOrigin = GameObject.Find(sessionOriginName);
+            var xrOrigin = GameObject.Find(xrOriginName);
 
-            sessionOrigin.AddOrGetComponent<ARTrackedObjectEvents>();
+            xrOrigin.AddOrGetComponent<ARTrackedObjectEvents>();
 
         }
 

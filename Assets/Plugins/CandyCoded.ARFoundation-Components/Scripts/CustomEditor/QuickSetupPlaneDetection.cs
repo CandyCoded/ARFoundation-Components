@@ -16,7 +16,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
         private const string defaultPlaneMenuPath = "GameObject/XR/AR Default Plane";
 
-        private const string sessionOriginName = "AR Session Origin";
+        private const string xrOriginName = "XR Origin";
 
         private const string defaultPlanePrefabPath = "Assets/AR Default Plane.prefab";
 
@@ -42,9 +42,9 @@ namespace CandyCoded.ARFoundationComponents.Editor
             var defaultPlanePrefab = CustomEditorExtensions.FindOrCreatePrefabFromAssetMenu(defaultPlaneName,
                 defaultPlaneMenuPath, defaultPlanePrefabPath);
 
-            var sessionOrigin = GameObject.Find(sessionOriginName);
+            var xrOrigin = GameObject.Find(xrOriginName);
 
-            var planeManager = sessionOrigin.AddOrGetComponent<ARPlaneManager>();
+            var planeManager = xrOrigin.AddOrGetComponent<ARPlaneManager>();
 
             planeManager.planePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(defaultPlanePrefabPath);
 
@@ -53,12 +53,12 @@ namespace CandyCoded.ARFoundationComponents.Editor
         private static void SetupARFoundationComponentsPlaneDetection()
         {
 
-            var sessionOrigin = GameObject.Find(sessionOriginName);
+            var xrOrigin = GameObject.Find(xrOriginName);
 
-            sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
-            var placeObjectOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
+            xrOrigin.AddOrGetComponent<ARPlaneEvents>();
+            var placeObjectOnPlane = xrOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
 
-            Selection.activeGameObject = sessionOrigin;
+            Selection.activeGameObject = xrOrigin;
 
             placeObjectOnPlane.objectToPlace =
                 AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
@@ -67,7 +67,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
             EditorApplication.update += AddPlaneEvent;
 
-            var showPlacementMarkerOnPlane = sessionOrigin.AddComponent<ARShowPlacementMarkerOnPlane>();
+            var showPlacementMarkerOnPlane = xrOrigin.AddComponent<ARShowPlacementMarkerOnPlane>();
 
             showPlacementMarkerOnPlane.placementMarker =
                 AssetDatabase.LoadAssetAtPath<GameObject>(AutoPopulateScene.cubePrefabPath);
@@ -77,9 +77,9 @@ namespace CandyCoded.ARFoundationComponents.Editor
         private static void AddPlaneEvent()
         {
 
-            var sessionOrigin = GameObject.Find(sessionOriginName);
-            var planeEvents = sessionOrigin.AddOrGetComponent<ARPlaneEvents>();
-            var placeObjectsOnPlane = sessionOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
+            var xrOrigin = GameObject.Find(xrOriginName);
+            var planeEvents = xrOrigin.AddOrGetComponent<ARPlaneEvents>();
+            var placeObjectsOnPlane = xrOrigin.AddOrGetComponent<ARPlaceObjectOnPlane>();
 
             if (planeEvents.PlaneTouchedWithLookingAtPosition == null)
             {

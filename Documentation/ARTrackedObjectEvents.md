@@ -1,6 +1,6 @@
 ### ARTrackedObjectEvents
 
-A component used to track objects targets in AR. Object targets are managed through the [XRReferenceObjectLibrary](https://docs.unity3d.com/Packages/com.unity.xr.arsubsystems@3.0/api/UnityEngine.XR.ARSubsystems.XRReferenceObjectLibrary.html) scriptable object.
+A component used to track objects targets in AR. Object targets are managed through the [XRReferenceObjectLibrary](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/api/UnityEngine.XR.ARSubsystems.XRReferenceObjectLibrary.html?q=XRReferenceObjectLibrary) scriptable object.
 
 #### Events
 

@@ -1,6 +1,6 @@
 ### ARTrackedImageEvents
 
-A component used to track image targets in AR. Image targets are managed through the [XRReferenceImageLibrary](https://docs.unity3d.com/Packages/com.unity.xr.arsubsystems@3.0/api/UnityEngine.XR.ARSubsystems.XRReferenceImageLibrary.html) scriptable object.
+A component used to track image targets in AR. Image targets are managed through the [XRReferenceImageLibrary](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/api/UnityEngine.XR.ARSubsystems.XRReferenceImageLibrary.html?q=XRReferenceImageLibrary) scriptable object.
 
 <img src="../Screenshots/XRReferenceImageLibrary.png" width="400">
 

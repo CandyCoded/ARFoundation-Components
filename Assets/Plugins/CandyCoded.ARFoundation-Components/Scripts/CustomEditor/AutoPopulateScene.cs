@@ -12,9 +12,9 @@ namespace CandyCoded.ARFoundationComponents.Editor
     public static class AutoPopulateScene
     {
 
-        private const string sessionOriginName = "AR Session Origin";
+        private const string sessionOriginName = "XR Origin";
 
-        private const string sessionOriginMenuPath = "GameObject/XR/AR Session Origin";
+        private const string sessionOriginMenuPath = "GameObject/XR/XR Origin (Mobile AR)";
 
         private const string sessionName = "AR Session";
 
@@ -29,28 +29,27 @@ namespace CandyCoded.ARFoundationComponents.Editor
         internal static void SetupARFoundation()
         {
 
+            foreach (var camera in (Camera[])Resources.FindObjectsOfTypeAll(typeof(Camera)))
+            {
+                if (camera.transform.parent == null && camera.gameObject.CompareTag("MainCamera"))
+                {
+                    Object.DestroyImmediate(camera.gameObject);
+                }
+            }
+
             var sessionOrigin =
                 CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionOriginName, sessionOriginMenuPath);
 
             sessionOrigin.AddOrGetComponent<ARRaycastManager>();
 
-            var mainCamera = GameObject.Find("Main Camera");
-
-            if (mainCamera)
-            {
-
-                Object.DestroyImmediate(mainCamera);
-
-            }
-
-            var session = CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionName, sessionMenuPath);
+            CustomEditorExtensions.FindOrCreateGameObjectFromAssetMenu(sessionName, sessionMenuPath);
 
         }
 
         internal static void SetupARFoundationComponents()
         {
 
-            var camera = GameObject.Find("AR Camera");
+            var camera = GameObject.Find("Main Camera");
             camera.tag = "MainCamera";
 
             var cameraManager = camera.AddOrGetComponent<ARCameraManager>();
