@@ -1,5 +1,6 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -7,7 +8,7 @@ using UnityEngine.XR.ARSubsystems;
 namespace CandyCoded.ARFoundationComponents
 {
 
-    [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(XROrigin))]
     [RequireComponent(typeof(ARRaycastManager))]
     [RequireComponent(typeof(ARPlaneManager))]
     [HelpURL(
@@ -53,20 +54,20 @@ namespace CandyCoded.ARFoundationComponents
             _raycastManager = gameObject.GetComponent<ARRaycastManager>();
             _planeManager = gameObject.GetComponent<ARPlaneManager>();
 
-            _mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+            _mainCamera = gameObject.GetComponent<XROrigin>().GetComponentInChildren<Camera>();
 
         }
 
         private void Start()
         {
 
-            if (ARSession.state == ARSessionState.None ||
-                ARSession.state == ARSessionState.Unsupported)
+            if (ARSession.state != ARSessionState.None &&
+                ARSession.state != ARSessionState.Unsupported)
             {
-
-                enabled = false;
-
+                return;
             }
+
+            enabled = false;
 
         }
 
@@ -88,37 +89,36 @@ namespace CandyCoded.ARFoundationComponents
         public void ShowPlacementMarkerOnPlane(bool planeVisible, Pose pose, ARPlane plane)
         {
 
-            if (planeVisible && _placementMarkerGameObject)
+            if (!_placementMarkerGameObject)
             {
-
-                _placementMarkerGameObject.SetActive(true);
-
-                _placementMarkerGameObject.transform.position =
-                    pose.position + pose.up.normalized * verticalOffset;
-
-                _placementMarkerGameObject.transform.rotation = pose.rotation;
-
-                if (plane.alignment.Equals(PlaneAlignment.None) ||
-                    plane.alignment.Equals(PlaneAlignment.NotAxisAligned))
-                {
-                    return;
-                }
-
-                var cameraPosition = _mainCamera.transform.position;
-
-                _placementMarkerGameObject.transform.LookAt(new Vector3(
-                    cameraPosition.x,
-                    _placementMarkerGameObject.transform.position.y,
-                    cameraPosition.z
-                ));
-
+                return;
             }
-            else
+
+            _placementMarkerGameObject.SetActive(planeVisible);
+
+            if (!planeVisible)
             {
-
-                _placementMarkerGameObject.SetActive(false);
-
+                return;
             }
+
+            _placementMarkerGameObject.transform.position =
+                pose.position + pose.up.normalized * verticalOffset;
+
+            _placementMarkerGameObject.transform.rotation = pose.rotation;
+
+            if (plane.alignment.Equals(PlaneAlignment.None) ||
+                plane.alignment.Equals(PlaneAlignment.NotAxisAligned))
+            {
+                return;
+            }
+
+            var cameraPosition = _mainCamera.transform.position;
+
+            _placementMarkerGameObject.transform.LookAt(new Vector3(
+                cameraPosition.x,
+                _placementMarkerGameObject.transform.position.y,
+                cameraPosition.z
+            ));
 
         }
 
