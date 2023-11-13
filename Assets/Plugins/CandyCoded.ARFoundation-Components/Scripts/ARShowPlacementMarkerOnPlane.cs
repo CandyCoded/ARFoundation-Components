@@ -1,5 +1,6 @@
 // Copyright (c) Scott Doxey. All Rights Reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -7,7 +8,7 @@ using UnityEngine.XR.ARSubsystems;
 namespace CandyCoded.ARFoundationComponents
 {
 
-    [RequireComponent(typeof(ARSessionOrigin))]
+    [RequireComponent(typeof(XROrigin))]
     [RequireComponent(typeof(ARRaycastManager))]
     [RequireComponent(typeof(ARPlaneManager))]
     [HelpURL(
@@ -53,7 +54,7 @@ namespace CandyCoded.ARFoundationComponents
             _raycastManager = gameObject.GetComponent<ARRaycastManager>();
             _planeManager = gameObject.GetComponent<ARPlaneManager>();
 
-            _mainCamera = gameObject.GetComponent<ARSessionOrigin>().camera;
+            _mainCamera = gameObject.GetComponent<XROrigin>().GetComponent<Camera>();
 
         }
 
