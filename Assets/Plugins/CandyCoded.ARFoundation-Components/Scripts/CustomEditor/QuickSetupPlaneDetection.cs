@@ -16,7 +16,7 @@ namespace CandyCoded.ARFoundationComponents.Editor
 
         private const string defaultPlaneMenuPath = "GameObject/XR/AR Default Plane";
 
-        private const string sessionOriginName = "AR Session Origin";
+        private const string sessionOriginName = "AR Session";
 
         private const string defaultPlanePrefabPath = "Assets/AR Default Plane.prefab";
 
